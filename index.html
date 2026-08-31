@@ -10,40 +10,68 @@
 </head>
 <body>
     <h1>Semiconductors Blog</h1>
-    This blog exhibits my journey through my master's degree in semiconductors.
-    <br>Eventually I'll talk more about but for now, I'll be using this for taking notes.
+        This blog exhibits my journey through my master's degree in semiconductors.
+        <br>Eventually I'll talk more about but for now, I'll be using this for taking notes.
 
-    <h2>Electromagnetism</h2>
+        <h2>Electromagnetism</h2>
 
-    <h3>Coulomb's Law</h3>
-    $$ \vec{ F }_{e} = k_e \frac{ q_1q_2 }{ r^2 } \hat{r} $$
+            <h3>Coulomb's Law</h3>
+                <p>
+                    $$ \vec{ F }_{e} = k_e \frac{ q_1q_2 }{ r^2 } \hat{r} $$
+                </p>
+                
+            <h3>Electric Field</h3>
+                <p>
+                    $$ \vec{ E } = \frac{ \vec{ F}_e }{ q_0 } $$
+                </p>
 
-    <h3>Electric Field</h3>
-    $$ \vec{ E } = \frac{ \vec{ F}_e }{ q_0 } $$
+            <h3>Charge Distribution</h3>
+                <h4>Linear</h4>
+                    <p>
+                        $$ dq = \lambda dx $$
+                    </p>
 
-    <h2>Electronic Devices</h2>
+                <h4>Superficial</h4>
+                    <p>
+                        $$ dq = \sigma dA $$
+                    </p>
+                
+                <h4>Volumetric</h4>
+                    <p>
+                        $$ dq = \rho dV $$
+                    </p>
 
-    <h3>Thermal-equilibrium electron concentration in the conduction band</h3>
-    <p>
-        \begin{align}
-            n_0 & = \int g_c(E) f_F(E) dE \\
-                & = N_c e^\left( \frac{ -(E_c - E_F) }{ k_BT } \right)
-        \end{align}
-    </p>
+        <h2>Electronic Devices</h2>
 
-    <h3>Thermal-equilibrium hole concentration in the valence band</h3>
-    <p>
-        \begin{align}
-            p_0 & = \int g_v(E) \left[ 1 - f_F(E) \right] dE \\
-                & = N_v e^\left( \frac{ -(E_F - E_v) }{ k_BT } \right)
-        \end{align}
-    </p>
+            <h3>PN Juntion</h3>
+                <p>
+                    Thermal Equilibrium: Implies that no external forces such as voltages, electric fields, magnetic equilibrium, or temperature gradient are acting on the semiconductor.
+                </p>
+            
+                <h4>Thermal-equilibrium electron concentration</h4>
+                    <h5>In conduction band</h5>
+                        <p>
+                            \begin{align}
+                                n_0 & = \int g_c(E) f_F(E) dE \\
+                                    & = N_c e^\left( \frac{ -(E_c - E_F) }{ k_BT } \right)
+                            \end{align}
+                        </p>
+                    <h5>In valence band</h5>
+                        <p>
+                            \begin{align}
+                                p_0 & = \int g_v(E) \left[ 1 - f_F(E) \right] dE \\
+                                    & = N_v e^\left( \frac{ -(E_F - E_v) }{ k_BT } \right)
+                            \end{align}
+                        </p>
 
-    <h3>Effective density of states in the conduction band</h3>
-        $$ N_c = 2 \left( \frac{ 2\pi m^*_nk_BT }{h^2} \right)^{3/2} $$
-
-    <h3>Effective density of states in the valence band</h3>
-        $$ N_v = 2 \left( \frac{ 2\pi m^*_pk_BT }{h^2} \right)^{3/2}$$
-
+                <h4>Effective density of states</h4>
+                    <h5>In conduction band</h5>
+                        <p>
+                            $$ N_c = 2 \left( \frac{ 2\pi m^*_nk_BT }{h^2} \right)^{3/2} $$
+                        </p>
+                    <h5>In valence band</h5>
+                        <p>
+                            $$ N_v = 2 \left( \frac{ 2\pi m^*_pk_BT }{h^2} \right)^{3/2}$$
+                        </p>
 </body>
 </html>
