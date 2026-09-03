@@ -4,105 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Semiconductors Blog</title>
-    <script defer src="mathjax-config.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"></script>
-    <script src = "script.js"></script>
 </head>
 <body>
     <h1>Semiconductors Blog</h1>
         This blog exhibits my journey through my master's degree in semiconductors.
         <br>Eventually I'll talk more about but for now, I'll be using this for taking notes.
 
-        <h2>Electromagnetism</h2>
-
-            <h3>Coulomb's Law</h3>
-                <p>
-                    $$ \vec{ F }_{e} = k_e \frac{ q_1q_2 }{ r^2 } \hat{r} $$
-                </p>
-                
-            <h3>Electric Field</h3>
-                <p>
-                    $$ \vec{ E } = \frac{ \vec{ F}_e }{ q_0 } $$
-                </p>
-
-            <h3>Charge Distribution</h3>
-                <h4>Linear</h4>
-                    <p>
-                        $$ dq = \lambda dx $$
-                    </p>
-
-                <h4>Superficial</h4>
-                    <p>
-                        $$ dq = \sigma dA $$
-                    </p>
-                
-                <h4>Volumetric</h4>
-                    <p>
-                        $$ dq = \rho dV $$
-                    </p>
-
-        <a href="x-ray_diffraction.html">X-ray Diffraction animation</a>
-
-        <h2>Electronic Devices</h2>
-
-            <h3>PN Junction</h3>
-                <p>
-                    Thermal Equilibrium: Implies that no external forces such as voltages, electric fields, magnetic fields, or temperature gradient are acting on the semiconductor.
-                </p>
-            
-                <h4>Thermal-equilibrium electron concentration</h4>
-                    <h5>In conduction band</h5>
-                        <p>
-                            \begin{align}
-                                n_0 & = \int g_c(E) f_F(E) dE \\
-                                    & = N_c e^\left( \frac{ -(E_c - E_F) }{ k_BT } \right)
-                            \end{align}
-                        </p>
-                    <h5>In valence band</h5>
-                        <p>
-                            \begin{align}
-                                p_0 & = \int g_v(E) \left[ 1 - f_F(E) \right] dE \\
-                                    & = N_v e^\left( \frac{ -(E_F - E_v) }{ k_BT } \right)
-                            \end{align}
-                        </p>
-
-                <h4>Effective density of states</h4>
-                    <h5>In conduction band</h5>
-                        <p>
-                            $$ N_c = 2 \left( \frac{ 2\pi m^*_nk_BT }{h^2} \right)^{3/2} $$
-                        </p>
-                    <h5>In valence band</h5>
-                        <p>
-                            $$ N_v = 2 \left( \frac{ 2\pi m^*_pk_BT }{h^2} \right)^{3/2}$$
-                        </p>
-
-                <h4>Built-in Potential Barrier</h4>
-                    <p>
-                        \begin{align}
-                            V_{bi} & = \frac{ k_BT }{ e }ln \left( \frac{N_aN_d}{n^2_i} \right) \\
-                            & = V_tln \left( \frac{N_aN_d}{n^2_i} \right)
-                        \end{align}
-                        
-                        where \( V_t = \frac{ k_BT }{ e } \) is defined as the thermal voltage.
-                    </p>
-
-                <h4>Electric Field in the depletion region</h4>
-                    <h5>In the P region</h5>
-                        <p>
-                            $$ E = \frac{ -eN_a }{ \epsilon_s }( x + x_p ) $$
-                            for \( -x_p \leq x \leq 0 \)
-                        </p>
-                    <h5>In the N region</h5>
-                        <p>
-                            $$ E = \frac{ -eN_d }{ \epsilon_s }( x_n - x ) $$
-                            for \( 0 \leq x \leq x_n \)
-                        </p>
-                    <h5>In the metallurgical junction</h5>
-                        <p>
-                            $$ N_dx_p = N_dx_n $$
-                        </p>
-        
-        <a href="pn-junction-potential.html">PN Junction Potential</a>
-
+        <ul>
+            <li><a href="../features/electromagnetism/index.html">Electromagnetism</a></li>
+            <li><a href="../features/electronic-devices/index.html">Electronic Devices</a></li>
+            <li><a href="../features/solid-state-physics/index.html">Solid State Physics</a></li>
+        </ul>
 </body>
 </html>

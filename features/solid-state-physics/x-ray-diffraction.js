@@ -1,177 +1,4 @@
-<!--
-  X-ray diffraction interference demo (2D)
-  --------------------------------------------------
-  Self-contained fragment: paste the <div id="xrd-demo">...</div> block
-  (including its inner <style> and <script>) anywhere in an existing page.
-  No external dependencies, no build step — plain canvas + vanilla JS.
-
-  Physics recap:
-    n_i, n_f  = unit propagation directions of incident / outgoing beam
-    R_L       = OP, the lattice vector between the two scattering points
-    delta     = R_L . (n_i - n_f)      (extra path length travelled via P)
-    dphi      = (2*pi/lambda) * delta  = 2*pi * (delta/lambda)
-
-  For this symmetric geometry (n_i and n_f each at angle theta to the
-  horizontal, on opposite sides of it) this reduces to a closed form,
-  which the script uses directly:
-    delta/lambda = -2 * (|R_L|/lambda) * sin(alpha) * sin(theta)
-  where alpha is the angle of R_L above the horizontal. Setting alpha=90
-  recovers the familiar Bragg form  delta = 2 d sin(theta).
--->
-
-<div id="xrd-demo" class="xrd-demo">
-  <style>
-    #xrd-demo.xrd-demo {
-      --bg: #10141c;
-      --panel: #161c27;
-      --line: #2a3242;
-      --text: #e7ebf2;
-      --muted: #8b93a7;
-      --amber: #f2a154;
-      --cyan: #56c2d6;
-      --sum: #f4f6fa;
-      --good: #63c47a;
-      --bad: #e2645f;
-      --mid: #d9b158;
-
-      font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-      color: var(--text);
-      background: var(--bg);
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 20px;
-      max-width: 900px;
-    }
-    #xrd-demo.xrd-demo * { box-sizing: border-box; }
-    #xrd-demo h3 {
-      margin: 0 0 4px 0;
-      font-weight: 600;
-      font-size: 17px;
-      letter-spacing: 0.2px;
-    }
-    #xrd-demo .xrd-sub {
-      margin: 0 0 16px 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.5;
-    }
-    #xrd-demo .xrd-layout {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-    #xrd-demo canvas {
-      display: block;
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      max-width: 100%;
-      height: auto;
-    }
-    #xrd-demo .xrd-side {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      flex: 1;
-      min-width: 260px;
-    }
-    #xrd-demo .xrd-readout {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 12px 14px;
-      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-      font-size: 12.5px;
-      line-height: 1.9;
-    }
-    #xrd-demo .xrd-readout .xrd-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-    }
-    #xrd-demo .xrd-readout .xrd-row span:first-child { color: var(--muted); }
-    #xrd-demo .xrd-verdict {
-      margin-top: 8px;
-      padding: 7px 10px;
-      border-radius: 6px;
-      font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      text-align: center;
-    }
-    #xrd-demo .xrd-controls {
-      margin-top: 18px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px 22px;
-    }
-    #xrd-demo .xrd-field label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 12.5px;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-    #xrd-demo .xrd-field label b {
-      color: var(--text);
-      font-weight: 600;
-      font-family: Consolas, Menlo, monospace;
-    }
-    #xrd-demo input[type="range"] {
-      width: 100%;
-      accent-color: var(--amber);
-    }
-    #xrd-demo .xrd-legend {
-      display: flex;
-      gap: 16px;
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 10px;
-      flex-wrap: wrap;
-    }
-    #xrd-demo .xrd-legend span { display: inline-flex; align-items: center; gap: 6px; }
-    #xrd-demo .xrd-swatch { width: 12px; height: 3px; border-radius: 2px; display: inline-block; }
-  </style>
-
-  <h3>X-ray scattering from two lattice points</h3>
-  <p class="xrd-sub">
-    O and P are separated by the lattice vector R<sub>L</sub>. Both scatter the
-    same incident wave along n<sub>f</sub>. Adjust the geometry and watch the
-    scope on the right: when the two scattered waves line up crest-to-crest
-    you get a diffraction peak; when they land crest-to-trough they cancel.
-  </p>
-
-  <div class="xrd-layout">
-    <canvas id="xrd-geo" width="560" height="380"></canvas>
-    <div class="xrd-side">
-      <canvas id="xrd-scope" width="300" height="220"></canvas>
-      <div class="xrd-readout" id="xrd-readout"></div>
-    </div>
-  </div>
-
-  <div class="xrd-legend">
-    <span><i class="xrd-swatch" style="background:var(--amber)"></i>incident / wave from O</span>
-    <span><i class="xrd-swatch" style="background:var(--cyan)"></i>outgoing / wave from P</span>
-    <span><i class="xrd-swatch" style="background:var(--sum)"></i>sum at the detector</span>
-  </div>
-
-  <div class="xrd-controls">
-    <div class="xrd-field">
-      <label>Scattering angle &theta; <b id="xrd-theta-val">30&deg;</b></label>
-      <input id="xrd-theta" type="range" min="5" max="80" step="1" value="30">
-    </div>
-    <div class="xrd-field">
-      <label>|R<sub>L</sub>| in units of &lambda; <b id="xrd-rl-val">1.00&lambda;</b></label>
-      <input id="xrd-rl" type="range" min="0" max="3" step="0.02" value="1">
-    </div>
-    <div class="xrd-field">
-      <label>Direction of R<sub>L</sub> (&alpha; above horizontal) <b id="xrd-alpha-val">55&deg;</b></label>
-      <input id="xrd-alpha" type="range" min="-90" max="90" step="1" value="55">
-    </div>
-  </div>
-
-  <script>
-  (function () {
+(function () {
     var root = document.getElementById('xrd-demo');
     var geo = root.querySelector('#xrd-geo');
     var gctx = geo.getContext('2d');
@@ -438,23 +265,23 @@
     }
 
     function updateReadout(st) {
-      var v = verdict(st.deltaOverLambda);
-      var resultAmp = 2 * Math.abs(Math.cos(st.dphi / 2));
-      readout.innerHTML =
-        '<div class="xrd-row"><span>\u03B8</span><span>' + st.thetaDeg.toFixed(0) + '\u00B0</span></div>' +
-        '<div class="xrd-row"><span>|R_L| / \u03BB</span><span>' + st.rlUnits.toFixed(2) + '</span></div>' +
-        '<div class="xrd-row"><span>\u03B1 (R_L direction)</span><span>' + st.alphaDeg.toFixed(0) + '\u00B0</span></div>' +
-        '<div class="xrd-row"><span>\u03B4 / \u03BB</span><span>' + st.deltaOverLambda.toFixed(3) + '</span></div>' +
-        '<div class="xrd-row"><span>\u03B4\u03C6</span><span>' + (st.dphi / Math.PI).toFixed(3) + '\u03C0 rad</span></div>' +
-        '<div class="xrd-row"><span>resultant amplitude</span><span>' + resultAmp.toFixed(2) + ' / 2</span></div>' +
-        '<div class="xrd-verdict" style="background:' + v.color + '22;color:' + v.color + ';border:1px solid ' + v.color + '55;">' + v.text + '</div>';
+        var v = verdict(st.deltaOverLambda);
+        var resultAmp = 2 * Math.abs(Math.cos(st.dphi / 2));
+        readout.innerHTML =
+            '<div class="xrd-row"><span>\u03B8</span><span>' + st.thetaDeg.toFixed(0) + '\u00B0</span></div>' +
+            '<div class="xrd-row"><span>|R_L| / \u03BB</span><span>' + st.rlUnits.toFixed(2) + '</span></div>' +
+            '<div class="xrd-row"><span>\u03B1 (R_L direction)</span><span>' + st.alphaDeg.toFixed(0) + '\u00B0</span></div>' +
+            '<div class="xrd-row"><span>\u03B4 / \u03BB</span><span>' + st.deltaOverLambda.toFixed(3) + '</span></div>' +
+            '<div class="xrd-row"><span>\u03B4\u03C6</span><span>' + (st.dphi / Math.PI).toFixed(3) + '\u03C0 rad</span></div>' +
+            '<div class="xrd-row"><span>resultant amplitude</span><span>' + resultAmp.toFixed(2) + ' / 2</span></div>' +
+            '<div class="xrd-verdict" style="background:' + v.color + '22;color:' + v.color + ';border:1px solid ' + v.color + '55;">' + v.text + '</div>';
     }
 
     function tick(now) {
-      var out = drawGeo(now);
-      drawScope(out.elapsed, out.st.dphi);
-      updateReadout(out.st);
-      requestAnimationFrame(tick);
+        var out = drawGeo(now);
+        drawScope(out.elapsed, out.st.dphi);
+        updateReadout(out.st);
+        requestAnimationFrame(tick);
     }
 
     thetaSlider.addEventListener('input', function () { thetaVal.textContent = thetaSlider.value + '\u00B0'; });
@@ -462,6 +289,4 @@
     alphaSlider.addEventListener('input', function () { alphaVal.textContent = alphaSlider.value + '\u00B0'; });
 
     requestAnimationFrame(tick);
-  })();
-  </script>
-</div>
+    })();

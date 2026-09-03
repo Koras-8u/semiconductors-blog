@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="mathjax-config.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"></script>
+</head>
+<body>
+    <h1>Electronic Devices</h1>
+
+        <h2>PN Junction</h2>
+            <p>
+                Thermal Equilibrium: Implies that no external forces such as voltages, electric fields, magnetic fields, or temperature gradient are acting on the semiconductor.
+            </p>
+        
+            <h3>Thermal-equilibrium electron concentration</h3>
+                <h4>In conduction band</h4>
+                    <p>
+                        \begin{align}
+                            n_0 & = \int g_c(E) f_F(E) dE \\
+                                & = N_c e^\left( \frac{ -(E_c - E_F) }{ k_BT } \right)
+                        \end{align}
+                    </p>
+                <h4>In valence band</h4>
+                    <p>
+                        \begin{align}
+                            p_0 & = \int g_v(E) \left[ 1 - f_F(E) \right] dE \\
+                                & = N_v e^\left( \frac{ -(E_F - E_v) }{ k_BT } \right)
+                        \end{align}
+                    </p>
+
+            <h3>Effective density of states</h3>
+                <h4>In conduction band</h4>
+                    <p>
+                        $$ N_c = 2 \left( \frac{ 2\pi m^*_nk_BT }{h^2} \right)^{3/2} $$
+                    </p>
+                <h4>In valence band</h4>
+                    <p>
+                        $$ N_v = 2 \left( \frac{ 2\pi m^*_pk_BT }{h^2} \right)^{3/2}$$
+                    </p>
+
+            <h3>Built-in Potential Barrier</h3>
+                <p>
+                    \begin{align}
+                        V_{bi} & = \frac{ k_BT }{ e }ln \left( \frac{N_aN_d}{n^2_i} \right) \\
+                        & = V_tln \left( \frac{N_aN_d}{n^2_i} \right)
+                    \end{align}
+                    
+                    where \( V_t = \frac{ k_BT }{ e } \) is defined as the thermal voltage.
+                </p>
+
+            <h3>Electric Field in the depletion region</h3>
+                <h4>In the P region</h4>
+                    <p>
+                        $$ E = \frac{ -eN_a }{ \epsilon_s }( x + x_p ) $$
+                        for \( -x_p \leq x \leq 0 \)
+                    </p>
+                <h4>In the N region</h4>
+                    <p>
+                        $$ E = \frac{ -eN_d }{ \epsilon_s }( x_n - x ) $$
+                        for \( 0 \leq x \leq x_n \)
+                    </p>
+                <h4>In the metallurgical junction</h4>
+                    <p>
+                        $$ N_dx_p = N_dx_n $$
+                    </p>
+    
+    <a href="../../index.html">Index</a><br>
+    <a href="pn-junction-potential.html">PN Junction Potential</a><br>
+</body>
+</html>

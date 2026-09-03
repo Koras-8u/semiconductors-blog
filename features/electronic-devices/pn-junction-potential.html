@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PN Junction Depletion Potential φ(x)</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" href="./pn-junction-potential.css">
+</head>
+<body>
+  <div class="wrap">
+
+  <h1>Depletion-Region Potential φ(x)</h1>
+  <p class="subtitle">
+    Electrostatic potential across an abrupt p–n junction, built from the two
+    piecewise solutions of Poisson's equation on the p-side (−x<sub>p</sub> ≤ x ≤ 0)
+    and n-side (0 ≤ x ≤ x<sub>n</sub>).
+  </p>
+
+  <div class="panel">
+    <div class="controls">
+      <div class="control p">
+        <label><span class="region-tag">x_p — p-side width</span><span class="val" id="xpVal">300 µm</span></label>
+        <input type="range" id="xpSlider" min="0" max="1000" step="1" value="300">
+        <div class="numeric-row">
+          <span>exact:</span>
+          <input type="number" id="xpNumber" min="0" max="1000" step="0.1" value="300">
+          <span>µm</span>
+        </div>
+      </div>
+      <div class="control n">
+        <label><span class="region-tag">x_n — n-side width</span><span class="val" id="xnVal">700 µm</span></label>
+        <input type="range" id="xnSlider" min="0" max="1000" step="1" value="700">
+        <div class="numeric-row">
+          <span>exact:</span>
+          <input type="number" id="xnNumber" min="0" max="1000" step="0.1" value="700">
+          <span>µm</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel chart-panel">
+    <canvas id="phiChart"></canvas>
+  </div>
+
+  <div class="panel">
+    <div class="readouts">
+      <div class="readout">φ at x = −x<sub>p</sub><b id="phiLeft">—</b></div>
+      <div class="readout">φ at x = 0 (junction)<b id="phiMid">—</b></div>
+      <div class="readout">φ at x = x<sub>n</sub> (built-in potential)<b id="phiRight">—</b></div>
+    </div>
+    <div class="params">
+      N<sub>a</sub> = <span>1×10¹⁶</span> &nbsp;·&nbsp;
+      N<sub>d</sub> = <span>1×10¹⁵</span> &nbsp;·&nbsp;
+      q = <span>1.602×10⁻¹⁹ C</span> &nbsp;·&nbsp;
+      ε<sub>s</sub> = 11.7 × 8.85×10⁻¹² = <span id="epsVal"></span> F/unit-length
+    </div>
+  </div>
+
+  <a href="./index.html">Index</a><br>
+  <footer>φ(x) computed client-side in JavaScript · no server required · GitHub Pages compatible</footer>
+</div>
+
+<script src="./pn-junction-potential.js"></script>
+</body>
+</html>
