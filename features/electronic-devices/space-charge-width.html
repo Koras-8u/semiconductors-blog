@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unión PN — Región de carga espacial</title>
+<style>
+  :root{
+    --bg: #10151c;
+    --panel: #161d27;
+    --grid: #232d3a;
+    --n-side: #3f8fd6;
+    --n-side-dim: #24557f;
+    --p-side: #d67a3f;
+    --p-side-dim: #7f4b24;
+    --depletion: #e9c46a;
+    --text: #dfe6ee;
+    --text-dim: #8494a6;
+    --accent: #e9c46a;
+    --mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+    --sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    display:flex;
+    justify-content:center;
+    padding: 24px 16px 48px;
+  }
+
+  .app{
+    width:100%;
+    max-width: 1040px;
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  header{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--grid);
+    padding-bottom: 14px;
+  }
+  header h1{
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: 0.01em;
+  }
+  header p{
+    margin:0;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    font-family: var(--mono);
+  }
+
+  .stage{
+    background: var(--panel);
+    border: 1px solid var(--grid);
+    border-radius: 4px;
+    padding: 18px 18px 8px;
+  }
+
+  svg { width: 100%; height: auto; display:block; }
+
+  .readout-row{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1px;
+    background: var(--grid);
+    border: 1px solid var(--grid);
+    margin-top: 14px;
+  }
+  .readout{
+    background: var(--panel);
+    padding: 10px 12px;
+    display:flex;
+    flex-direction:column;
+    gap: 4px;
+  }
+  .readout .label{
+    font-size: 0.68rem;
+    color: var(--text-dim);
+    font-family: var(--mono);
+  }
+  .readout .value{
+    font-family: var(--mono);
+    font-size: 0.95rem;
+    color: var(--text);
+  }
+  .readout.hl .value{ color: var(--accent); }
+
+  .controls{
+    background: var(--panel);
+    border: 1px solid var(--grid);
+    border-radius: 4px;
+    padding: 18px 20px 20px;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 28px;
+  }
+  @media (max-width: 680px){
+    .controls{ grid-template-columns: 1fr; }
+  }
+
+  .control{
+    display:flex;
+    flex-direction:column;
+    gap: 6px;
+  }
+  .control .row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    font-size: 0.82rem;
+  }
+  .control .row .name{ color: var(--text); }
+  .control .row .val{ font-family: var(--mono); color: var(--accent); }
+
+  input[type=range]{
+    -webkit-appearance:none;
+    appearance:none;
+    width:100%;
+    height: 3px;
+    background: var(--grid);
+    border-radius: 2px;
+    outline:none;
+  }
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none;
+    width:14px; height:14px;
+    border-radius:50%;
+    background: var(--accent);
+    cursor:pointer;
+    border: 2px solid var(--bg);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+  input[type=range]::-moz-range-thumb{
+    width:14px; height:14px;
+    border-radius:50%;
+    background: var(--accent);
+    cursor:pointer;
+    border: 2px solid var(--bg);
+  }
+
+  select, .knum{
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--grid);
+    border-radius: 3px;
+    padding: 5px 8px;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+  }
+
+  .material-row{
+    grid-column: 1 / -1;
+    display:flex;
+    gap: 18px;
+    align-items:center;
+    flex-wrap: wrap;
+    border-top: 1px dashed var(--grid);
+    padding-top: 14px;
+    margin-top: 4px;
+  }
+  .material-row label{
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    display:flex;
+    align-items:center;
+    gap: 8px;
+  }
+
+  footer{
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    font-family: var(--mono);
+    text-align:center;
+  }
+
+  .toggle-bias{
+    display:inline-flex;
+    border: 1px solid var(--grid);
+    border-radius: 3px;
+    overflow:hidden;
+  }
+  .toggle-bias button{
+    background: var(--bg);
+    color: var(--text-dim);
+    border: none;
+    padding: 6px 12px;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    cursor: pointer;
+  }
+  .toggle-bias button.active{
+    background: var(--accent);
+    color: #1a1305;
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <header>
+    <h1>Unión PN — región de carga espacial</h1>
+    <p>W, x_p, x_n en función de V_bi, V_R, n_i, N_a, ε_r</p>
+  </header>
+
+  <div class="stage">
+    <svg id="diagram" viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg"></svg>
+
+    <div class="readout-row">
+      <div class="readout"><div class="label">N_a (cm⁻³)</div><div class="value" id="ro-na">—</div></div>
+      <div class="readout"><div class="label">N_d (cm⁻³)</div><div class="value" id="ro-nd">—</div></div>
+      <div class="readout hl"><div class="label">x_p</div><div class="value" id="ro-xp">—</div></div>
+      <div class="readout hl"><div class="label">x_n</div><div class="value" id="ro-xn">—</div></div>
+      <div class="readout hl"><div class="label">W = x_p + x_n</div><div class="value" id="ro-w">—</div></div>
+    </div>
+  </div>
+
+  <div class="controls">
+
+    <div class="control">
+      <div class="row"><span class="name">V_bi — potencial interconstruido</span><span class="val" id="v-vbi">0.70 V</span></div>
+      <input type="range" id="s-vbi" min="0.20" max="1.20" step="0.01" value="0.70">
+    </div>
+
+    <div class="control">
+      <div class="row">
+        <span class="name">V_R — polarización inversa</span>
+        <span class="val" id="v-vr">0.00 V</span>
+      </div>
+      <input type="range" id="s-vr" min="0" max="100" step="0.1" value="0">
+      <div class="toggle-bias" id="bias-toggle" style="margin-top:4px; width:fit-content;">
+        <button data-mode="eq" class="active">Sin polarización</button>
+        <button data-mode="rev">Polarización inversa</button>
+      </div>
+    </div>
+
+    <div class="control">
+      <div class="row"><span class="name">N_a — dopado aceptor (cm⁻³)</span><span class="val" id="v-na">1.00 × 10¹⁶ cm⁻³</span></div>
+      <input type="range" id="s-na" min="14" max="20" step="0.01" value="16">
+    </div>
+
+    <div class="control">
+      <div class="row"><span class="name">N_d — derivado (cm⁻³)</span><span class="val" id="v-nd">—</span></div>
+      <div style="font-family:var(--mono); font-size:0.72rem; color:var(--text-dim); line-height:1.5;">
+        N_aN_d = n_i² e^(V_bi/V_t)&nbsp;&nbsp;→&nbsp;&nbsp;N_d = (N_aN_d)/N_a
+      </div>
+    </div>
+
+    <div class="material-row">
+      <label>
+        Material (ε_r, n_i):
+        <select id="material">
+          <option value="11.7|1.5e10">Si — ε_r=11.7, n_i=1.5×10¹⁰</option>
+          <option value="16.0|2.4e13">Ge — ε_r=16.0, n_i=2.4×10¹³</option>
+          <option value="12.9|1.8e6">GaAs — ε_r=12.9, n_i=1.8×10⁶</option>
+          <option value="9.7|8.2e-9">SiC (4H) — ε_r=9.7, n_i=8.2×10⁻⁹</option>
+          <option value="custom">Personalizado…</option>
+        </select>
+      </label>
+      <label>
+        ε_r:
+        <input type="range" id="s-eps" min="2" max="20" step="0.1" value="11.7" style="width:120px" disabled>
+        <span class="val" id="v-eps" style="font-family:var(--mono); color:var(--accent);">11.7</span>
+      </label>
+      <label>
+        n_i (cm⁻³):
+        <input type="range" id="s-ni" min="-10" max="14" step="0.001" value="10.176" style="width:120px" disabled>
+        <span class="val" id="v-ni" style="font-family:var(--mono); color:var(--accent);">1.50 × 10¹⁰</span>
+      </label>
+    </div>
+
+  </div>
+
+  <footer>N_aN_d = n_i² e^(V_bi/V_t), V_t = 0.02584 V &nbsp;·&nbsp; W = x_p + x_n &nbsp;·&nbsp; escala horizontal ajustada automáticamente al ancho mayor</footer>
+
+</div>
+
+<script>
+(function(){
+  const q   = 1.602176634e-19;   // C
+  const eps0 = 8.8541878128e-12; // F/m
+  const cm3_to_m3 = 1e6;
+  const Vt = 0.02584; // V, voltaje térmico a 300 K
+
+  const els = {
+    vbi: document.getElementById('s-vbi'),
+    vr: document.getElementById('s-vr'),
+    na: document.getElementById('s-na'),
+    eps: document.getElementById('s-eps'),
+    ni: document.getElementById('s-ni'),
+    material: document.getElementById('material'),
+    biasButtons: document.querySelectorAll('#bias-toggle button'),
+  };
+
+  let mode = 'eq'; // 'eq' | 'rev'
+
+  function fmtSci(x, digits=2){
+    if (x === 0) return '0';
+    const exp = Math.floor(Math.log10(Math.abs(x)));
+    const mant = x / Math.pow(10, exp);
+    const supers = {'-':'⁻','0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹'};
+    const expStr = String(exp).split('').map(c => supers[c] ?? c).join('');
+    return `${mant.toFixed(digits)} × 10${expStr}`;
+  }
+
+  function fmtLength(m){
+    // pick a sensible unit: nm or µm
+    if (m < 1e-6) return (m*1e9).toFixed(2) + ' nm';
+    return (m*1e6).toFixed(3) + ' µm';
+  }
+
+  function depletionWidths(Vtot, Na_cm3, Nd_cm3, epsR){
+    const Na = Na_cm3 * cm3_to_m3;
+    const Nd = Nd_cm3 * cm3_to_m3;
+    const eps = epsR * eps0;
+    const common = (2*eps*Vtot)/q;
+    const W  = Math.sqrt( common * (Na+Nd)/(Na*Nd) );
+    const xp = Math.sqrt( common * (Nd/Na) * (1/(Na+Nd)) );
+    const xn = Math.sqrt( common * (Na/Nd) * (1/(Na+Nd)) );
+    return {W, xp, xn};
+  }
+
+  function readState(){
+    const Vbi = parseFloat(els.vbi.value);
+    const VR  = parseFloat(els.vr.value);
+    const NaExp = parseFloat(els.na.value);
+    const epsR = parseFloat(els.eps.value);
+    const niExp = parseFloat(els.ni.value);
+
+    const Na = Math.pow(10, NaExp);
+    const ni = Math.pow(10, niExp);
+
+    // N_aN_d = n_i^2 * e^(V_bi/V_t)  -->  N_d = (N_aN_d)/N_a
+    const K  = ni*ni * Math.exp(Vbi/Vt);
+    const Nd = K / Na;
+
+    const Vtot = mode === 'rev' ? (Vbi + VR) : Vbi;
+    const {W, xp, xn} = depletionWidths(Vtot, Na, Nd, epsR);
+
+    return {Vbi, VR, Na, Nd, ni, K, epsR, Vtot, W, xp, xn};
+  }
+
+  // ---------- SVG diagram ----------
+  const svgNS = 'http://www.w3.org/2000/svg';
+  const svg = document.getElementById('diagram');
+  const VW = 900, VH = 300;
+  const bandTop = 60, bandBottom = 220;
+  const midX = VW/2;
+
+  function el(tag, attrs){
+    const e = document.createElementNS(svgNS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+
+  function buildStaticParts(){
+    svg.innerHTML = '';
+
+    // background grid
+    const gridGroup = el('g', {});
+    for (let x = 0; x <= VW; x += 30){
+      gridGroup.appendChild(el('line', {x1:x, y1:0, x2:x, y2:VH, stroke:'var(--grid)', 'stroke-width':1, opacity:0.5}));
+    }
+    svg.appendChild(gridGroup);
+
+    // P region
+    svg.appendChild(el('rect', {id:'p-region', x:0, y:bandTop, width:midX, height:bandBottom-bandTop, fill:'var(--p-side-dim)'}));
+    // N region
+    svg.appendChild(el('rect', {id:'n-region', x:midX, y:bandTop, width:midX, height:bandBottom-bandTop, fill:'var(--n-side-dim)'}));
+
+    // depletion overlay (drawn on top, hatched)
+    const pattern = el('pattern', {id:'hatch', width:8, height:8, patternUnits:'userSpaceOnUse', patternTransform:'rotate(45)'});
+    pattern.appendChild(el('rect', {width:8, height:8, fill:'var(--depletion)', opacity:0.28}));
+    pattern.appendChild(el('line', {x1:0, y1:0, x2:0, y2:8, stroke:'var(--depletion)', 'stroke-width':2, opacity:0.55}));
+    const defs = el('defs', {});
+    defs.appendChild(pattern);
+    svg.appendChild(defs);
+
+    svg.appendChild(el('rect', {id:'depletion-region', x:midX, y:bandTop, width:0, height:bandBottom-bandTop, fill:'url(#hatch)'}));
+
+    // junction line
+    svg.appendChild(el('line', {id:'junction-line', x1:midX, y1:bandTop-10, x2:midX, y2:bandBottom+10, stroke:'var(--text)', 'stroke-width':1, 'stroke-dasharray':'3,3', opacity:0.6}));
+
+    // depletion edges
+    svg.appendChild(el('line', {id:'edge-left', x1:midX, y1:bandTop-16, x2:midX, y2:bandBottom+16, stroke:'var(--accent)', 'stroke-width':2}));
+    svg.appendChild(el('line', {id:'edge-right', x1:midX, y1:bandTop-16, x2:midX, y2:bandBottom+16, stroke:'var(--accent)', 'stroke-width':2}));
+
+    // labels P / N
+    svg.appendChild(el('text', {x:midX*0.28, y:bandTop-22, fill:'var(--p-side)', 'font-family':'var(--sans)', 'font-size':22, 'font-weight':600}))
+      .textContent = 'P';
+    svg.appendChild(el('text', {x:midX*1.72, y:bandTop-22, fill:'var(--n-side)', 'font-family':'var(--sans)', 'font-size':22, 'font-weight':600}))
+      .textContent = 'N';
+
+    // xp / xn dimension labels
+    const xpLabel = el('text', {id:'xp-label', x:0, y:bandBottom+40, fill:'var(--text)', 'font-family':'var(--mono)', 'font-size':13, 'text-anchor':'middle'});
+    svg.appendChild(xpLabel);
+    const xnLabel = el('text', {id:'xn-label', x:0, y:bandBottom+40, fill:'var(--text)', 'font-family':'var(--mono)', 'font-size':13, 'text-anchor':'middle'});
+    svg.appendChild(xnLabel);
+    const wLabel = el('text', {id:'w-label', x:midX, y:bandTop-40, fill:'var(--accent)', 'font-family':'var(--mono)', 'font-size':13, 'text-anchor':'middle'});
+    svg.appendChild(wLabel);
+
+    // dimension ticks
+    svg.appendChild(el('line', {id:'xp-tick-a', stroke:'var(--text-dim)', 'stroke-width':1}));
+    svg.appendChild(el('line', {id:'xp-tick-b', stroke:'var(--text-dim)', 'stroke-width':1}));
+    svg.appendChild(el('line', {id:'xp-dim', stroke:'var(--text-dim)', 'stroke-width':1}));
+    svg.appendChild(el('line', {id:'xn-tick-a', stroke:'var(--text-dim)', 'stroke-width':1}));
+    svg.appendChild(el('line', {id:'xn-tick-b', stroke:'var(--text-dim)', 'stroke-width':1}));
+    svg.appendChild(el('line', {id:'xn-dim', stroke:'var(--text-dim)', 'stroke-width':1}));
+  }
+
+  buildStaticParts();
+
+  function updateDiagram(state){
+    const {xp, xn, W} = state;
+    // scale: fit total W into ~70% of half-band width on each side, with a floor so tiny W is still visible
+    const maxHalf = midX * 0.85;
+    const scalePx = maxHalf / Math.max(xp, xn, W*0.55, 1e-12); // px per meter, keep both sides comfortably inside
+
+    const xpPx = Math.min(xp * scalePx, maxHalf);
+    const xnPx = Math.min(xn * scalePx, maxHalf);
+
+    const leftX = midX - xpPx;
+    const rightX = midX + xnPx;
+
+    document.getElementById('depletion-region').setAttribute('x', leftX);
+    document.getElementById('depletion-region').setAttribute('width', xpPx + xnPx);
+
+    document.getElementById('edge-left').setAttribute('x1', leftX);
+    document.getElementById('edge-left').setAttribute('x2', leftX);
+    document.getElementById('edge-right').setAttribute('x1', rightX);
+    document.getElementById('edge-right').setAttribute('x2', rightX);
+
+    // dimension lines below the band
+    const dimY = bandBottom + 26;
+    const setLine = (id, x1, y1, x2, y2) => {
+      const e = document.getElementById(id);
+      e.setAttribute('x1', x1); e.setAttribute('y1', y1);
+      e.setAttribute('x2', x2); e.setAttribute('y2', y2);
+    };
+    setLine('xp-tick-a', leftX, dimY-6, leftX, dimY+6);
+    setLine('xp-tick-b', midX, dimY-6, midX, dimY+6);
+    setLine('xp-dim', leftX, dimY, midX, dimY);
+
+    setLine('xn-tick-a', midX, dimY-6, midX, dimY+6);
+    setLine('xn-tick-b', rightX, dimY-6, rightX, dimY+6);
+    setLine('xn-dim', midX, dimY, rightX, dimY);
+
+    const xpLabel = document.getElementById('xp-label');
+    xpLabel.setAttribute('x', (leftX+midX)/2);
+    xpLabel.setAttribute('y', dimY+18);
+    xpLabel.textContent = 'x_p = ' + fmtLength(xp);
+
+    const xnLabel = document.getElementById('xn-label');
+    xnLabel.setAttribute('x', (midX+rightX)/2);
+    xnLabel.setAttribute('y', dimY+18);
+    xnLabel.textContent = 'x_n = ' + fmtLength(xn);
+
+    const wLabel = document.getElementById('w-label');
+    wLabel.setAttribute('x', midX);
+    wLabel.textContent = 'W = ' + fmtLength(W);
+  }
+
+  function updateReadouts(state){
+    document.getElementById('ro-na').textContent = fmtSci(state.Na);
+    document.getElementById('ro-nd').textContent = fmtSci(state.Nd);
+    document.getElementById('ro-xp').textContent = fmtLength(state.xp);
+    document.getElementById('ro-xn').textContent = fmtLength(state.xn);
+    document.getElementById('ro-w').textContent  = fmtLength(state.W);
+  }
+
+  function updateLabels(state){
+    document.getElementById('v-vbi').textContent = state.Vbi.toFixed(2) + ' V';
+    document.getElementById('v-vr').textContent  = state.VR.toFixed(2) + ' V';
+    document.getElementById('v-na').textContent  = fmtSci(state.Na) + ' cm⁻³';
+    document.getElementById('v-nd').textContent  = fmtSci(state.Nd) + ' cm⁻³';
+    document.getElementById('v-eps').textContent = state.epsR.toFixed(2);
+    document.getElementById('v-ni').textContent  = fmtSci(state.ni);
+  }
+
+  function render(){
+    const state = readState();
+    updateDiagram(state);
+    updateReadouts(state);
+    updateLabels(state);
+  }
+
+  // ---------- events ----------
+  [els.vbi, els.vr, els.na, els.eps, els.ni].forEach(inp => inp.addEventListener('input', render));
+
+  els.biasButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      mode = btn.dataset.mode;
+      els.biasButtons.forEach(b => b.classList.toggle('active', b === btn));
+      els.vr.disabled = (mode === 'eq');
+      render();
+    });
+  });
+  els.vr.disabled = true; // starts in 'eq' mode
+
+  els.material.addEventListener('change', () => {
+    if (els.material.value === 'custom'){
+      els.eps.disabled = false;
+      els.ni.disabled = false;
+    } else {
+      const [epsStr, niStr] = els.material.value.split('|');
+      els.eps.disabled = true;
+      els.ni.disabled = true;
+      els.eps.value = epsStr;
+      els.ni.value = Math.log10(parseFloat(niStr));
+    }
+    render();
+  });
+
+  render();
+})();
+</script>
+
+</body>
+</html>
