@@ -8,6 +8,124 @@
     <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"></script>
 </head>
 <body>
+    <h1>Solid State Physics</h1>
+        <h2>Waves</h2>
+            Waves can be defined as self-propagating periodic disturbances that transport energy and momentum with no net transport of matter.
+            <h3>Wave equation</h3>
+                <p>
+                    A wave equation is any partial differential equation that has solutions of the form
+                        \begin{equation}
+                            u(\vec{r},t) = A \sin \varphi
+                        \end{equation}
+                    or
+                        \begin{equation}
+                            u(\vec{r},t) = Ae^{i \varphi}
+                        \end{equation}
+
+                    <ul>
+                        <li>\( u \) can be any physical parameter that can display wave properties (the magnitude of the electric field of a light wave).</li>
+                        
+                    </ul>
+                </p>
+                <h4>Phase</h4>
+                    <p>
+                        The phase or phase angle \( \varphi \) is an angular variable which defines the periodicity of a wave
+                            \begin{align}
+                                \varphi & = \vec{k} \cdot \vec{r} - \omega t \\
+                                & = k_x x + k_y y + k_z z - \omega t
+                            \end{align}
+                        <ul>
+                            <li>\( \vec{k} \) is referred to as the propagation vector along an arbitrary direction in space (or as the propagation constant when the wave propagates along one of the coordinate axes). 
+                                <ul>
+                                    <li>Establishes the direction and the speed of the wave travel.</li>
+                                    <li>Can be written as \( \vec{k} = \nabla \varphi = k_x \hat{\imath} + k_y \hat{\jmath} + k_z \hat{k} \), where \( k_x \), \( k_y \) and \( k_z \) are the components of the propagation vector along the coordinate axes.</li>
+                                        <ul>
+                                            <li>The direction of the gradient is that in which the phase \( \varphi \) advances most rapidly as a function of distance.</li>
+                                            <li>The magnitude \( k = \sqrt {k_x^2 + k_y^2  + k_z^2} \)  is the rate of change of the phase angle \( \varphi \) along the direction of the gradient.</li>
+                                        </ul>
+                                    <li>\( k = 2 \pi / \lambda \) means that, at any fixed time, if the wave advances a distance equal to the wavelength \( \lambda \), the phase angle \( \varphi \) must change by \( 2 \pi \).</li>
+                                    <li>If it is negative (\( -\vec{k} \)), reverses the direction of the wave.</li>
+                                    <li>If it is complex, the wave is exponentially attenuated, where the imaginary part plays the role of an exponential attenuating factor.</li>
+                                </ul>
+                            </li>
+                            <li>\( \omega \) is the angular frequency in \( [rad/s] \).
+                                <ul>
+                                    <li>Always regarded as a real and positive quantity.</li>
+                                    <li>Related to the linear frequency by \( \omega = 2 \pi f \).</li>
+                                    <li>\( \omega = 2 \pi/T \) means that, at any fixed position, when a time equal to the period \( T \) of a single oscillation elapses, the phase angle must also change by \( 2\pi \).</li>
+                                    <li>If the oscillations are in the direction of propagation, the wave is longitudinal (e.g. sound waves).</li>
+                                    <li>If the oscillations are normal to the propagation direction, the wave is transverse (e.g. electromagnetic waves).</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </p>
+                    <h5>Phase velocity</h5>
+                            <p>
+                                The velocity of propagation or phase velocity can be visualized as the speed at which the crests and throughs of the wave advance.
+                                \begin{equation}
+                                    v_p = \frac{\omega}{k}
+                                \end{equation}
+
+                                This is valid for both cases when the wave propagates along an arbitrary direction in space and when it moves along a specific coordinate axis. <br>
+                                It comes from tracking a single point \(s\) of the wave from a starting phase position \( s_0 \), which leads to
+                                \begin{align}
+                                    s & = \frac{\omega}{k} t + \frac{\varphi _0}{k} \\
+                                    & = v_p t + s_0
+                                \end{align}
+                            </p>
+                    <h5>Dispersion relation</h5>
+                            <p>
+                                Provides information about how waves propagate in a medium. Relation between the wavelength of a wave to its frequency, which is not always linear: \( \omega(k) \).
+                            </p>
+                <h4>A wave propagating along the x-direction</h4>
+                    <p>
+                        The most common - and simplest - wave equation has the form
+                        \begin{equation}
+                            \frac{\partial ^2 u}{\partial x^2} = K^2 \frac{\partial ^2u}{\partial t^2}
+                        \end{equation}
+
+                        For a wave propagating along the x-direction. By calculating the first partial derivative for both \(x\) and \(t\), we get
+                        \begin{align}
+                            \frac{\partial u}{\partial x} & = \frac{\partial}{\partial x} \left( Ae^{i (kx - \omega t)} \right) \\
+                            & = ik Ae^{i (kx - \omega t)}
+                        \end{align}
+
+                        \begin{align}
+                            \frac{\partial u}{\partial t} & = \frac{\partial}{\partial x} \left( Ae^{i (kx - \omega t)} \right) \\
+                            & = -i\omega Ae^{i (kx - \omega t)} 
+                        \end{align}
+
+                        Then, we calculate both second partial derivatives
+                        \begin{align}
+                            \frac{\partial ^2 u}{\partial x^2} & = \frac{\partial}{\partial x} \left( ik Ae^{i (kx - \omega t)} \right) \\
+                            & = (ik)ik Ae^{i (kx - \omega t)} \\
+                            & = -k^2 Ae^{i (kx - \omega t)}
+                        \end{align}
+
+                        \begin{align}
+                            \frac{\partial ^2 u}{\partial t^2} & = \frac{\partial}{\partial x} \left( -i\omega Ae^{i (kx - \omega t)}  \right) \\
+                            & = (-i\omega)(-i\omega) Ae^{i (kx - \omega t)} \\
+                            & = - \omega ^2 Ae^{i (kx - \omega t)} 
+                        \end{align}
+
+                        Substituting in the wave equation
+                        \begin{align}
+                            -k^2 Ae^{i (kx - \omega t)} & = - \omega ^2 K^2 Ae^{i (kx - \omega t)} \\
+                            -k^2 & = - \omega ^2 K^2
+                        \end{align}
+                        
+                        Which leads to
+                        \begin{equation}
+                            \omega = \frac{k}{K}
+                        \end{equation}
+
+                        From here we can conclude that \( \omega \propto k \) and \( \omega/k \) has the constant value of \( 1/K \) independent of frequency or wavelength. <br>
+                        Electromagnetic waves in free space obey wave equations of this form, in which \( K^2 \) has the value of \( \epsilon _0 \mu _0 \) giving a phase velocity
+                        \begin{equation}
+                            v_p = c = \frac{1}{ \sqrt{\epsilon _0 \mu _0} }
+                        \end{equation}
+                    </p>
+
     <a href="../../index.html">Index</a><br>
     <a href="x-ray-diffraction.html">X-ray Diffraction animation</a><br>
 </body>
