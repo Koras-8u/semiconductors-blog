@@ -125,7 +125,95 @@
                             v_p = c = \frac{1}{ \sqrt{\epsilon _0 \mu _0} }
                         \end{equation}
                     </p>
+        <h2>Sound waves and lattice vibrations</h2>
+            <h3>Cohesive energy in ionic crystal</h3>
+                <p>
+                    Ionic substances are bound together by electrostatic forces between the cations and anions formed by the transfer of valence electrons. But it is also true that there is a repulsive force which begins to act between neighboring atoms when their electron clouds start to overlap, and increases very rapidly until it balances any attractive forces that are present. <br><br>
+                    The total energy of interaction for a crystal containing 2N ions is
+                    \begin{equation}
+                        U_0 = - \frac{N \alpha q^2}{4 \pi \epsilon _0 a} \left(1 - \frac{1}{b} \right)
+                    \end{equation}
 
+                    which certainly represents the equilibrium configuration of a ionic lattice.
+                </p>
+            <h3>Dispersionless wave</h3>
+                <p>
+                    For a linear elastic medium that is completely homogeneous and isotropic, like a long bar of such a substance, of uniform cross section, oriented parallel to the x-axis of a cartesian coordinate system, elastic deformations can propagate as longitudinal waves travelling in the x-direction, and we can find the that the associated wave equation is
+                    \begin{equation}
+                        \frac{\partial ^2 u}{\partial x^2} = \frac{\rho}{Y} \frac{\partial ^2u}{\partial t^2}
+                    \end{equation}
+
+                    where \( Y \) is the Young's modulus and \( \rho \) the density. Then, from the partial differential equation, we get the dispersion relation
+                    \begin{equation}
+                        \omega = k \sqrt{ \frac{Y}{\rho}}
+                    \end{equation}
+                    
+                    and the phase velocity
+                    \begin{equation}
+                        v_p = \sqrt{ \frac{Y}{\rho}}
+                    \end{equation}
+
+                    A wave having the property of a phase velocity completely independent from frequency or wavelength is considered free from dispersion or dispersionless.
+                </p>
+            <h3>Group velocity</h3>
+                <p>
+                    The group velocity is the phase velocity of a long-wavelegth envelope, which is also a wave, formed by two (or even more) sinusoidal waves of slightly different frequency and wavelength.
+                    \begin{equation}
+                        v_g = \frac{d\omega}{dk}
+                    \end{equation}
+
+                    <ul>
+                        <li>The energy of the wave is propagated with the group velocity</li>
+                        <li>For elastic waves in a homogeneous, isotropic medium, the phase and group velocity are identical.</li>
+                    </ul>
+
+                    To demonstrate such a fact, let there be two sinusoidal wave trains having the same amplitude, but sligthly different frequencies and wavelengths.
+                    \begin{align}
+                        u_1 & = A\cos(kx - \omega t) \\
+                        u_2 & = A\cos[(k + dk)x + (\omega + d\omega)t]
+                    \end{align}
+
+                    Superposing these wave, we obtain
+                    \begin{align}
+                        u_1 + u_2 & = A\cos(kx - \omega t) + A\cos[(k + dk)x + (\omega + d\omega)t] \\
+                        & = A\{\cos(kx - \omega t) + \cos[(k + dk)x + (\omega + d\omega)t]\} \\
+                        & = A(\cos \alpha + \cos \beta)
+                    \end{align}
+
+                    From elementary trigonometry
+                    \begin{equation}
+                        \cos \alpha + \cos \beta = 2\cos\left[\frac{1}{2}(\alpha + \beta)\right]\cos\left[\frac{1}{2}(\alpha - \beta)\right] \\
+                    \end{equation}
+                    
+                    while from the superposition, we have
+                    \begin{align}
+                        \alpha + \beta & = kx - \omega t + [(k + dk)x - (\omega + d\omega)t] \\
+                        & = 2kx - 2\omega t + xdk - td\omega \\
+                        & \cong 2(kx - \omega t)
+                    \end{align}
+
+                    and
+                    \begin{align}
+                        \alpha - \beta & = kx - \omega t - [(k + dk)x - (\omega + d\omega)t] \\
+                        & =  td\omega - xdk\\
+                    \end{align}
+                    
+                    In the sum of angles, the terms containing differential can be neglected in comparison with the others, though in the substraction the differential quantitites are significant since there are no others terms. So, finally we have
+                    \begin{align}
+                        u_1 + u_2 & = 2A\cos(kx - \omega t)\cos\left(\frac{1}{2}td\omega - \frac{1}{2}xdk\right) \\
+                        & = 2\cos\left(\frac{1}{2}td\omega - \frac{1}{2}xdk\right)u_1 
+                    \end{align}
+
+                    The equation of motion of the point zero phase of the envelope wave is
+                    \begin{equation}
+                        td\omega - xdk = 0
+                    \end{equation}
+                    \begin{equation}
+                        \Rightarrow x = \frac{d\omega}{dk}t = v_gt
+                    \end{equation}
+
+                    from which we define the group velocity.
+                </p>
     <a href="../../index.html">Index</a><br>
     <a href="x-ray-diffraction.html">X-ray Diffraction animation</a><br>
 </body>
