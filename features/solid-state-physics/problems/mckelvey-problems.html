@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="mathjax-config.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"></script>
+</head>
+<body>
+    <h1>Problems of the McKelvey's book, Chapter 1</h1>
+        <p>
+            Meanwhile, the exercises will vaguely refer to parts of the book, without any adptation to its wording. I'll eventually add resources and links to them.
+        </p>
+        
+        <h2>Problem 3</h2>
+        <p>
+            From the data in the above table, calculate the interatomic spacing (distance AB in Figure 1.7) in crystalline silicon. How many atoms are there per unit volume \( [cm^{-3}] \)? <br><br>
+            
+            From the table, we have \( a = 5.42 \AA \). It must be known that the bond length AB in the diamond structure is equal to one-quarter of the cubic cell diagonal, i.e., \( AB = \frac{1}{4}d \), where \( d = |\vec{d}| \), and \( \vec{d} = a(\hat{\imath} + \hat{\jmath} + \hat{k}) \) as the cell diagonal. <br><br>
+            
+            Then, we can calculate
+            \begin{align}
+                AB & = \frac{1}{4}\sqrt{a^2 + a^2 + a^2} \\
+                & = \frac{1}{4}\sqrt{3a^2} \\
+                & = \frac{\sqrt{3}}{4}a
+            \end{align}
+            
+            By substituting the value for \( a \), we have
+            \begin{align}
+                AB & = \frac{\sqrt{3}}{4}(5.42 \AA) \\
+                & = 2.34 \AA
+            \end{align}
+
+            Now, let's calculate the atoms per unit volume with the help of \( n = \frac{N_{uc}}{V_{uc}} \) as follows:
+            \begin{align}
+                V_{uc} & = a^3 \\
+                & = (5.42 \AA)^3 \\
+                & = 159.22 \AA^3 \left( \frac{10^{-30}m^3}{\AA^3} \right) \left( \frac{10^6cm^3}{m^3} \right) \\
+                & = 159.22 \times 10^{-24}cm^3
+            \end{align}
+
+            There are eight atoms in the unit cell, \( n_{uc} = 8 \), therefore
+            \begin{align}
+                n & = \frac{8}{159.22 \times 10^{-24}cm^3} \\
+                & = 5.024 \times 10^{22}cm^{-3}
+            \end{align}
+
+            Finally we say that the concentration of atoms in crystalline silicon is \(  5.024 \times 10^{22}cm^{-3} \).
+        </p>
+
+    <a href="../index.html">Index</a><br>
+</body>
+</html>
+
