@@ -191,7 +191,7 @@
 
             <h3>Dispersionless wave</h3>
                 <p>
-                    For a linear elastic medium that is completely homogeneous and isotropic, like a long bar of such a substance, of uniform cross section, oriented parallel to the x-axis of a cartesian coordinate system, elastic deformations can propagate as longitudinal waves travelling in the x-direction, and we can find the that the associated wave equation is
+                    For a linear elastic medium that is completely homogeneous and isotropic, like a long bar of such a substance, of uniform cross section, oriented parallel to the x-axis of a cartesian coordinate system, elastic deformations can propagate as longitudinal waves travelling in the x-direction, and we can find that the associated wave equation is
                     \begin{equation}
                         \frac{\partial ^2 u}{\partial x^2} = \frac{\rho}{Y} \frac{\partial ^2u}{\partial t^2}
                     \end{equation}
@@ -267,6 +267,31 @@
 
                     from which we define the group velocity.
                 </p>
+            <h3>Dispersive media</h3>
+                <p>
+                    The effects associated with propagation in dispersive media can be illustrated by an example involving the wave solutions of the partial differential equation
+                    \begin{equation}
+                        \frac{\partial^4u}{\partial t^4} + \alpha^2 \frac{\partial^2u}{\partial t^2} + \beta^2 \frac{\partial^2u}{\partial x^2} = 0
+                    \end{equation}
+
+                    which leads to a dispersion relation of \( k \) as function of \( \omega \)
+                    \begin{equation}
+                        k = \frac{\pm\omega\sqrt{\omega^2 - \alpha^2}}{\beta}
+                    \end{equation}
+
+                    and the phase velocity
+                    \begin{equation}
+                        v_p = \frac{\omega}{k} = \frac{\beta}{\sqrt{\omega^2 - \alpha^2}}
+                    \end{equation}
+
+                    By differentiating, we obtain
+                    \begin{equation}
+                        v_g = \frac{d\omega}{dk} = \frac{\beta \sqrt{\omega^2 - \alpha^2}}{2\omega^2 - \alpha^2}
+                    \end{equation}
+
+                    Since the phase velocity is no longer a constant, then the wave suffers dispersion. The media propagates waves for \( \omega > \alpha \) without attenuation, but will propagate attenuated waves with frequencies below this "cut-off" limit.
+                </p>
+            
     <a href="../../index.html">Index</a><br>
     <a href="x-ray-diffraction.html">X-ray Diffraction animation</a><br>
 </body>
