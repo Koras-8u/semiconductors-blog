@@ -18,17 +18,15 @@
             <h3>Thermal-equilibrium electron concentration</h3>
                 <h4>In conduction band</h4>
                     <p>
-                        \begin{align}
-                            n_0 & = \int g_c(E) f_F(E) dE \\
-                                & = N_c e^\left( \frac{ -(E_c - E_F) }{ k_BT } \right)
-                        \end{align}
+                        \begin{equation}
+                            n_0 = N_c e^\left( \frac{ -(E_c - E_F) }{ k_BT } \right)
+                        \end{equation}
                     </p>
                 <h4>In valence band</h4>
                     <p>
-                        \begin{align}
-                            p_0 & = \int g_v(E) \left[ 1 - f_F(E) \right] dE \\
-                                & = N_v e^\left( \frac{ -(E_F - E_v) }{ k_BT } \right)
-                        \end{align}
+                        \begin{equation}
+                            p_0 = N_v e^\left( \frac{ -(E_F - E_v) }{ k_BT } \right)
+                        \end{equation}
                     </p>
 
             <h3>Effective density of states</h3>
@@ -43,30 +41,63 @@
 
             <h3>Built-in Potential Barrier</h3>
                 <p>
-                    \begin{align}
-                        V_{bi} & = \frac{ k_BT }{ e }ln \left( \frac{N_aN_d}{n^2_i} \right) \\
-                        & = V_tln \left( \frac{N_aN_d}{n^2_i} \right)
-                    \end{align}
+                    \begin{equation}
+                        V_{bi} = V_tln \left( \frac{N_aN_d}{n^2_i} \right)
+                    \end{equation}
                     
-                    where \( V_t = \frac{ k_BT }{ e } \) is defined as the thermal voltage.
+                    where \( V_t = \frac{ k_BT }{ q } = 0.026V \)  is defined as the thermal voltage.
                 </p>
 
             <h3>Electric Field in the depletion region</h3>
                 <h4>In the P region</h4>
                     <p>
-                        $$ E = \frac{ -eN_a }{ \epsilon_s }( x + x_p ) $$
-                        for \( -x_p \leq x \leq 0 \)
+                        \begin{equation}
+                            E(x) = \frac{ -qN_a }{ \epsilon_s }( x + x_p ), \quad -x_p \leq x \leq 0
+                        \end{equation}
+                        
                     </p>
                 <h4>In the N region</h4>
                     <p>
-                        $$ E = \frac{ -eN_d }{ \epsilon_s }( x_n - x ) $$
-                        for \( 0 \leq x \leq x_n \)
+                        \begin{equation}
+                            E(x) = \frac{ -qN_d }{ \epsilon_s }( x_n - x ), \quad 0 \leq x \leq x_n
+                        \end{equation}
                     </p>
                 <h4>In the metallurgical junction</h4>
                     <p>
-                        $$ N_dx_p = N_dx_n $$
+                        \begin{equation}
+                            E(x=0) = \frac{ -qN_d }{ \epsilon_s }x_n = \frac{ -qN_a }{ \epsilon_s }x_p
+                        \end{equation}
+                        \begin{equation}
+                            \implies N_dx_p = N_dx_n
+                        \end{equation}
+                    </p>
+            <h3>Potential in the depletion region</h3>
+                <h4>In the P region</h4>
+                    <p>
+                        \begin{equation}
+                            \phi_p(x) = \frac{qN_a}{2\epsilon_s}(x + x_p)^2
+                        \end{equation}
+                    </p>
+
+                <h4>In the N region</h4>
+                    <p>
+                        \begin{equation}
+                            \phi_n(x) = \frac{qN_d}{\epsilon_s}\left(x_nx - \frac{x}{2}\right)^2 + \frac{qN_a}{2\epsilon_s}x_p^2
+                        \end{equation}
+                    </p>
+                <h4>In the metallurgical junction</h4>
+                    <p>
+                        \begin{equation}
+                            \phi(x=0) = \frac{qN_a}{2\epsilon_s}x_p^2
+                        \end{equation}
                     </p>
     
+                <h4>The built-in potencial </h4>
+                    <p>
+                        \begin{equation}
+                            \phi(x=x_n) = \frac{qN_a}{2\epsilon_s}(N_ax_p^2 + N_dx_n^2)
+                        \end{equation}
+                    </p>
     <a href="../../index.html">Index</a><br>
     <a href="pn-junction-potential.html">PN Junction Potential</a><br>
 </body>
