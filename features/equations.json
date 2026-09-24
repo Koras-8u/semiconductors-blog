@@ -1,0 +1,54 @@
+{
+    "n_0": {
+        "latex": "\\begin{equation} n_0 = N_c e^\\left( \\frac{ -(E_c - E_F) }{ k_BT } \\right) \\end{equation}",
+        "description": "Thermal-equilibrium electron concentration"
+    },
+    "p_0": {
+        "latex": "\\begin{equation} p_0 = N_v e^\\left( \\frac{ -(E_F - E_v) }{ k_BT } \\right) \\end{equation}",
+        "description": "Thermal-equilibrium hole concentration"
+    },
+    "N_c": {
+        "latex": "\\begin{equation} N_c = 2 \\left( \\frac{ 2\\pi m^*_nk_BT }{h^2} \\right)^{3/2} \\end{equation}",
+        "description": "Effective density of states in conduction band"
+    },
+    "N_v": {
+        "latex": "\\begin{equation} N_v = 2 \\left( \\frac{ 2\\pi m^*_pk_BT }{h^2} \\right)^{3/2} \\end{equation}",
+        "description": "Effective density of states in valence band"
+    },
+    "V_bi": {
+        "latex": "\\begin{equation} V_{bi} = V_tln \\left( \\frac{N_aN_d}{n^2_i} \\right) \\end{equation}",
+        "description": "Built-in Potential Barrier"
+    },
+    "e_field_p_region": {
+        "latex": "\\begin{equation}E(x) = \\frac{-qN_a}{\\epsilon_s}(x + x_p), \\quad -x_p \\leq x \\leq 0\\end{equation}",
+        "description": "Electric field in the P region of the depletion region"
+    },
+    "e_field_n_region": {
+        "latex": "\\begin{equation}E(x) = \\frac{-qN_d}{\\epsilon_s}(x_n - x), \\quad 0 \\leq x \\leq x_n\\end{equation}",
+        "description": "Electric field in the N region of the depletion region"
+    },
+    "e_field_junction": {
+        "latex": "\\begin{equation}E(x=0) = \\frac{-qN_a}{\\epsilon_s}x_p = \\frac{-qN_d}{\\epsilon_s}x_n \\end{equation}",
+        "description": "Electric field at the metallurgical junction"
+    },
+    "charge_balance_junction": {
+        "latex": "\\begin{equation}\\implies N_ax_p = N_dx_n\\end{equation}",
+        "description": "Charge balance relation at the metallurgical junction"
+    },
+    "phi_p_x": {
+        "latex": "\\begin{equation}\\phi(x) = \\frac{qN_a}{2\\epsilon_s}(x + x_p)^2, \\quad -x_p \\leq x \\leq 0 \\end{equation}",
+        "description": "Potential in the p-side depletion region"
+    },
+    "phi_n_x": {
+        "latex": "\\begin{equation}\\phi(x)=\\frac{qN_d}{\\epsilon_s}\\left(x_nx-\\frac{x^2}{2}\\right)+\\frac{qN_a}{2 \\epsilon_s} x_p^2, \\quad 0 \\leq x \\leq x_n \\end{equation}",
+        "description": "Potential in the n-side depletion region"
+    },
+    "phi_junction": {
+        "latex": "\\begin{equation}\\phi(x=0) = \\frac{qN_a}{2\\epsilon_s}x_p^2\\end{equation}",
+        "description": "Potential at the metallurgical junction"
+    },
+    "phi_builtin": {
+        "latex": "\\begin{equation}\\phi(x=x_n) = \\frac{qN_a}{2\\epsilon_s}(N_ax_p^2 + N_dx_n^2)\\end{equation}",
+        "description": "Built-in potential across the depletion region"
+    }
+}
