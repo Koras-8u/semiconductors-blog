@@ -30,16 +30,68 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Diagrama de bandas de energía</td>
-                        <td><img src="../../public/diagrama-bandas-sin-polarización.png" width="300"></td>
-                        <td><img src="../../public/diagrama-bandas-polarización-inversa.png" width="300"></td>
-                        <td><img src="../../public/diagrama-bandas-polarización-directa.png" width="300"></td>
+                        <td>Condiciones</td>
+                        <td>
+                            <ul>
+                                <li>No se aplica ningún voltaje a través de la unión.</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Se aplica un voltaje a través de la unión.</li>
+                                <li>El positivo está conectado a la región N.</li>
+                                <li>El negativo está conectado a la región P.</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Se aplica un voltaje a través de la unión.</li>
+                                <li>El positivo está conectado a la región P.</li>
+                                <li>El negativo está conectado a la región N.</li>
+                            </ul>
+                        </td>
                     </tr>
                     <tr>
                         <td>Diagrama eléctrico</td>
                         <td><img src="../../public/diagrama-eléctrico-sin-polarización.png" height="120"></td>
                         <td><img src="../../public/diagrama-eléctrico-polarización-inversa.png" height="150"></td>
                         <td><img src="../../public/diagrama-eléctrico-polarización-directa.png" height="150"></td>
+                    </tr>
+                    <tr>
+                        <td>Características</td>
+                        <td>
+                            <ul>
+                                <li>La unión está en equilibrio térmico.</li>
+                                <li>La energía de Fermi se mantiene en nivel constante a lo largo de todo el sistema.</li>
+                                <li>Los electrones en la banda de conducción de la región N ven una barrera de potencial al tratar de moverse hacia la banda de conducción de la región P: <i>el voltaje interconstruido</i>.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Diagrama de bandas de energía</td>
+                        <td><img src="../../public/diagrama-bandas-sin-polarización.png" width="300"></td>
+                        <td><img src="../../public/diagrama-bandas-polarización-inversa.png" width="300"></td>
+                        <td><img src="../../public/diagrama-bandas-polarización-directa.png" width="300"></td>
+                    </tr>
+                    <tr>
+                        <td>Potencial formado entre las regiones P y N</td>
+                        <td>
+                            \begin{equation}
+                                V_{bi} = |\phi_{Fn}| + |\phi_{Fp}|
+                            \end{equation}
+                        </td>
+                        <td>
+                            \begin{align}
+                                V_{total} & = |\phi_{Fn}| + |\phi_{Fp}| + V_R \\
+                                & = V_{bi} + V_R
+                            \end{align}
+                        </td>
+                        <td>
+                            \begin{align}
+                                V_{total} & = |\phi_{Fn}| + |\phi_{Fp}| - V_a \\
+                                & = V_{bi} - V_a
+                            \end{align}
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -66,9 +118,20 @@
 
             <h3>Built-in Potential Barrier</h3>
                 <p>
-                    <span class="equation" data-eq-id="V_bi"></span>
-                    
-                    where \( V_t = \frac{ k_BT }{ q } = 0.026V \)  is defined as the thermal voltage.
+                    El <i>voltaje interconstruido</i>:
+                    \begin{equation}
+                        V_{bi} = V_tln \left( \frac{N_aN_d}{n^2_i} \right)
+                    \end{equation}
+            
+                    donde \( V_t = \frac{ k_BT }{ q } = 0.026V \) es el voltaje térmico.
+
+                    <ul>
+                        <li>impide que los electrones en la banda de conducción de la región N se muevan hacia la banda de conducción de la región P.</li>
+                        <li>mantiene el equilibrio entre portadores mayoritarios (electrones) en la región N y los portadores minoritarios (electrones) en la región P.</li>
+                        <li>mantiene el equilibrio entre portadores mayoritarios (huecos) en la región P y los portadores minoritarios (huecos) en la región N.</li>
+                        <li>No puede ser medida con un voltímetro porque se formarán nuevas barreras de potencial entre las puntas de prueba y el semiconductor cancelará el <i>voltaje interconstruido</i>.</li>
+                        <li>no produce corriente.</li>
+                    </ul>
                 </p>
 
             <h3>Electric Field in the depletion region</h3>
