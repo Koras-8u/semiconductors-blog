@@ -96,78 +96,85 @@
                 </tbody>
             </table>
 
-            <h3>Thermal-equilibrium electron concentration</h3>
-                <h4>In conduction band</h4>
+            <h3>Unión sin polarización</h3>
+                <h3>Barrera de potencial interconstruida</h3>
+                    <h4>Definición</h4>
                     <p>
-                        <span class="equation" data-eq-id="n_0"></span>
+                        El <i>voltaje interconstruido</i> puede definirse como la diferencia entre los niveles de energía intrínsecos de Fermi en las regiones P y N, conduciendo a la forma final:
+                        \begin{equation}
+                            V_{bi} = V_tln \left( \frac{N_aN_d}{n^2_i} \right)
+                        \end{equation}
+                
+                        donde $ V_t = \frac{ k_BT }{ q } = 0.026V $ es el voltaje térmico.
+                        <h4>Características cualitativas</h4>
+                        <ul>
+                            <li>Impide que los electrones en la banda de conducción de la región N se muevan hacia la banda de conducción de la región P.</li>
+                            <li>Mantiene el equilibrio entre portadores mayoritarios (electrones) en la región N y los portadores minoritarios (electrones) en la región P.</li>
+                            <li>Mantiene el equilibrio entre portadores mayoritarios (huecos) en la región P y los portadores minoritarios (huecos) en la región N.</li>
+                            <li>No puede ser medida con un voltímetro porque se formarán nuevas barreras de potencial entre las puntas de prueba y el semiconductor cancelará el <i>voltaje interconstruido</i>.</li>
+                            <li>No produce corriente.</li>
+                        </ul>
                     </p>
-                <h4>In valence band</h4>
-                    <p>
-                        <span class="equation" data-eq-id="p_0"></span>
-                    </p>
+                    <h4>Demostración</h4>
+                    La obtención de la ecuación final parte de la definición de $ \phi_{Fp} $ y $ \phi_{Fn} $. (<b>Nota:</b> Todos los cálculos y los parámetros usados son considerando que el sistema se encuentra en equilibrio térmico). <br><br>
 
-            <h3>Effective density of states</h3>
-                <h4>In conduction band</h4>
-                    <p>
-                        <span class="equation" data-eq-id="N_c"></span>
-                    </p>
-                <h4>In valence band</h4>
-                    <p>
-                        <span class="equation" data-eq-id="N_v"></span>
-                    </p>
+                    <table>
+                        <thead>
+                            <th></th>
+                            <th>Región P</th>
+                            <th>Región N</th>
+                        </thead>
+                        <tbody>
+                            <td>Definición de concentraciones de portadores</td>
+                            <td>
+                                Concentración de electrones en la banda de conducción:
+                                \begin{equation}
+                                    n_0 = N_d = n_i \exp \left( \frac{E_F - E_{Fi}}{k_B T} \right)
+                                \end{equation}
+                            </td>
+                            <td>
+                                Concentración de electrones en la banda de conducción:
+                                \begin{equation}
+                                    p_0 = N_a = n_i \exp \left( \frac{E_{Fi} - E_F}{k_B T} \right)
+                                \end{equation}
+                            </td>
+                        </tbody>
+                    </table>
 
-            <h3>Built-in Potential Barrier</h3>
-                <p>
-                    El <i>voltaje interconstruido</i>:
-                    \begin{equation}
-                        V_{bi} = V_tln \left( \frac{N_aN_d}{n^2_i} \right)
-                    \end{equation}
-            
-                    donde \( V_t = \frac{ k_BT }{ q } = 0.026V \) es el voltaje térmico.
+                <h3>Electric Field in the depletion region</h3>
+                    <h4>In the P region</h4>
+                        <p>
+                            <span class="equation" data-eq-id="e_field_p_region"></span>
+                        </p>
+                    <h4>In the N region</h4>
+                        <p>
+                            <span class="equation" data-eq-id="e_field_n_region"></span>
+                        </p>
+                    <h4>In the metallurgical junction</h4>
+                        <p>
+                            <span class="equation" data-eq-id="e_field_junction"></span>
+                            <span class="equation" data-eq-id="charge_balance_junction"></span>
+                        </p>
 
-                    <ul>
-                        <li>impide que los electrones en la banda de conducción de la región N se muevan hacia la banda de conducción de la región P.</li>
-                        <li>mantiene el equilibrio entre portadores mayoritarios (electrones) en la región N y los portadores minoritarios (electrones) en la región P.</li>
-                        <li>mantiene el equilibrio entre portadores mayoritarios (huecos) en la región P y los portadores minoritarios (huecos) en la región N.</li>
-                        <li>No puede ser medida con un voltímetro porque se formarán nuevas barreras de potencial entre las puntas de prueba y el semiconductor cancelará el <i>voltaje interconstruido</i>.</li>
-                        <li>no produce corriente.</li>
-                    </ul>
-                </p>
+                <h3>Potential in the depletion region</h3>
+                    <h4>In the P region</h4>
+                        <p>
+                            <span class="equation" data-eq-id="phi_p_x"></span>
+                        </p>
 
-            <h3>Electric Field in the depletion region</h3>
-                <h4>In the P region</h4>
-                    <p>
-                        <span class="equation" data-eq-id="e_field_p_region"></span>
-                    </p>
-                <h4>In the N region</h4>
-                    <p>
-                        <span class="equation" data-eq-id="e_field_n_region"></span>
-                    </p>
-                <h4>In the metallurgical junction</h4>
-                    <p>
-                        <span class="equation" data-eq-id="e_field_junction"></span>
-                        <span class="equation" data-eq-id="charge_balance_junction"></span>
-                    </p>
+                    <h4>In the N region</h4>
+                        <p>
+                            <span class="equation" data-eq-id="phi_n_x"></span>
+                        </p>
+                    <h4>In the metallurgical junction</h4>
+                        <p>
+                            <span class="equation" data-eq-id="phi_junction"></span>
+                        </p>
 
-            <h3>Potential in the depletion region</h3>
-                <h4>In the P region</h4>
-                    <p>
-                        <span class="equation" data-eq-id="phi_p_x"></span>
-                    </p>
-
-                <h4>In the N region</h4>
-                    <p>
-                        <span class="equation" data-eq-id="phi_n_x"></span>
-                    </p>
-                <h4>In the metallurgical junction</h4>
-                    <p>
-                        <span class="equation" data-eq-id="phi_junction"></span>
-                    </p>
-
-                <h4>The built-in potencial </h4>
-                    <p>
-                        <span class="equation" data-eq-id="phi_builtin"></span>
-                    </p>
+                    <h4>The built-in potencial </h4>
+                        <p>
+                            <span class="equation" data-eq-id="phi_builtin"></span>
+                        </p>
     <a href="../../index.html">Index</a><br>
     <a href="pn-junction-potential.html">PN Junction Potential</a><br>
 </body>
