@@ -298,8 +298,32 @@
                                     \end{equation}
                                 </td>
                             </tr>
+                            <tr>
+                                <td>
+                                    Sustitución en la ecuación del campo
+                                </td>
+                                <td>
+                                    \begin{equation}
+                                        E_p(x) = -\frac{eN_a}{\epsilon_s} (x + x_p)
+                                    \end{equation}
+                                </td>
+                                <td>
+                                    \begin{align}
+                                        E_n(x) & = \frac{eN_d}{\epsilon_s} (x - x_n) \\
+                                        & = -\frac{eN_d}{\epsilon_s} (x_n - x)
+                                    \end{align}
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
+
+                    De esta forma, el campo eléctrico se puede escribir como una función por partes
+                    \begin{equation}
+                        E(x)= \begin{cases} 
+                            -\frac{eN_a}{\epsilon_s} (x + x_p), & -x_p \leq x \leq 0 \\ 
+                            -\frac{eN_d}{\epsilon_s} (x_n - x), & 0 < x \leq x_n
+                        \end{cases}
+                    \end{equation}
                 </p>
                 <h4>In the P region</h4>
                     <p>
