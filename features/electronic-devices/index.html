@@ -396,29 +396,47 @@
                                 \therefore N_a x_p & = N_a x_n
                             \end{align}
 
-                            lo que significa que el número de cargas negativas por unidad de área en la región P es igual al número de cargas positivas por unidad de área en la región N.
+                            lo que significa que el número de cargas negativas por unidad de área en la región P es igual al número de cargas positivas por unidad de área en la región N. <br><br>
+
+                            Para el potencial eléctrico se procede de la siguiente forma.
+
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Región P</th>
+                                        <th>Región N</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Obtención del potencial eléctrico mediante la integral</td>
+                                        <td>
+                                            \begin{align}
+                                                \phi_p(x) & = \int [ -E_p(x) ]dx \\
+                                                & = \int \left\{ - \left[ -\frac{eN_a}{\epsilon_s}(x + x_p) \right] \right\}dx \\
+                                                & = \int \frac{eN_a}{\epsilon_s}(x + x_p)dx \\
+                                                & = \frac{eN_a}{\epsilon_s} \int(x + x_p)dx \\
+                                                & = \frac{eN_a}{\epsilon_s} \left( \int xdx + x_p \int dx \right) \\
+                                                & = \frac{eN_a}{\epsilon_s} \left( \frac{x^2}{2} + x_p x + {C_p}' \right) \\
+                                            \end{align}
+                                        </td>
+                                        <td>
+                                            \begin{align}
+                                                \phi_n(x) & = \int [ -E_n(x) ]dx \\
+                                                & = \int \left\{ - \left[ -\frac{eN_d}{\epsilon_s}(x_n - x) \right] \right\}dx \\
+                                                & = \int \frac{eN_d}{\epsilon_s}(x_n - x)dx \\
+                                                & = \frac{eN_d}{\epsilon_s} \int(x_n - x)dx \\
+                                                & = \frac{eN_d}{\epsilon_s} \left( x_n \int dx - \int xdx \right) \\
+                                                & = \frac{eN_d}{\epsilon_s} \left( x_n x - \frac{x^2}{2} + {C_n}' \right) \\
+                                            \end{align}
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
                         </p>
-                
 
-            <h3>Potential in the depletion region</h3>
-                <h4>In the P region</h4>
-                    <p>
-                        <span class="equation" data-eq-id="phi_p_x"></span>
-                    </p>
-
-                <h4>In the N region</h4>
-                    <p>
-                        <span class="equation" data-eq-id="phi_n_x"></span>
-                    </p>
-                <h4>In the metallurgical junction</h4>
-                    <p>
-                        <span class="equation" data-eq-id="phi_junction"></span>
-                    </p>
-
-                <h4>The built-in potencial </h4>
-                    <p>
-                        <span class="equation" data-eq-id="phi_builtin"></span>
-                    </p>
     <a href="../../index.html">Index</a><br>
     <a href="pn-junction-potential.html">PN Junction Potential</a><br>
 </body>
