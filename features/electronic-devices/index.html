@@ -432,7 +432,37 @@
                                             \end{align}
                                         </td>
                                     </tr>
-
+                                    <tr>
+                                        <td>Obtención de la constante de integración</td>
+                                        <td>Se asume que el potencial eléctrico en $ x = -x_p $ es cero, entonces:
+                                            \begin{equation}
+                                                \frac{eN_a}{\epsilon_s} \left[ \frac{(-x_p)^2}{2} + x_p (-x_p) + {C_p}' \right] = 0
+                                            \end{equation}
+                                            \begin{equation}
+                                                \rightarrow \frac{x_p^2}{2} - x_p^2 + {C_p}' = 0
+                                            \end{equation}
+                                            \begin{equation}
+                                                \rightarrow -\frac{x_p^2}{2} + {C_p}' = 0
+                                            \end{equation}
+                                            \begin{equation}
+                                                \implies {C_p}' = \frac{x_p^2}{2}
+                                            \end{equation}
+                                        </td>
+                                        <td>Se asume que el potencial es continuo en $ x = 0 $, por lo que $ \phi_p(x = 0) = \phi_n(x = 0) $. (<b>Nota:</b> es necesario conocer antes el valor de la constante en la región P):
+                                            \begin{equation}
+                                                \frac{eN_a}{\epsilon_s} \left[ \frac{(0)^2}{2} + x_p (0) + {C_p}' \right] = \frac{eN_d}{\epsilon_s} \left[ x_n (0) - \frac{(0)^2}{2} + {C_n}' \right]
+                                            \end{equation}
+                                            \begin{equation}
+                                                \rightarrow N_a {C_p}' = N_d {C_n}'
+                                            \end{equation}
+                                            \begin{equation}
+                                                \rightarrow {C_n}' = \frac{N_a}{N_d} {C_p}'
+                                            \end{equation}
+                                            \begin{equation}
+                                                \implies {C_n}' = \frac{N_a}{N_d} \left( \frac{x_p^2}{2} \right)
+                                            \end{equation}
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </p>
