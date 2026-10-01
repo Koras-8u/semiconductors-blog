@@ -595,7 +595,7 @@
                                                 x_p^2 = \frac{2 \epsilon_s V_{bi}}{e} \left( \frac{N_d}{N_a} \right) \left( \frac{1}{N_a + N_d} \right)
                                             \end{equation}
                                             \begin{equation}
-                                                \implies x_p = \sqrt{ \frac{2\epsilon_s V_{bi}}{e} \left( \frac{N_d}{N_a} \right) \left( \frac{1}{N_a + N_d} \right) }                                                
+                                                \implies x_p = \sqrt{ \frac{2\epsilon_s V_{bi}}{e} \left( \frac{N_d}{N_a} \right) \left( \frac{1}{N_a + N_d} \right) }
                                             \end{equation}
                                         </td>
                                         <td>
@@ -609,6 +609,21 @@
                                     </tr>
                                 </tbody>
                             </table>
+
+                            Si el ancho se define como $ W = x_p + x_n $, entonces
+                            \begin{align}
+                                W & = \sqrt{ \frac{2\epsilon_s V_{bi}}{e} \left( \frac{N_d}{N_a} \right) \left( \frac{1}{N_a + N_d} \right) } + \sqrt{ \frac{2\epsilon_s V_{bi}}{e} \left( \frac{N_a}{N_d} \right) \left( \frac{1}{N_a + N_d} \right) } \\
+                                & = \sqrt{ \frac{2\epsilon_s V_{bi}}{e} \left( \frac{1}{N_a + N_d} \right) } \left( \sqrt{ \frac{N_d}{N_a} } + \sqrt{ \frac{N_a}{N_d} } \right) \\
+                                & = \sqrt{ \frac{2\epsilon_s V_{bi}}{e} \left( \frac{1}{N_a + N_d} \right) } \left( \frac{\sqrt{N_d}}{\sqrt{N_a}} + \frac{\sqrt{N_a}}{\sqrt{N_d}} \right) \\
+                                & = \sqrt{ \frac{2\epsilon_s V_{bi}}{e} \left( \frac{1}{N_a + N_d} \right) } \left( \frac{N_d + N_a}{\sqrt{N_a N_d}} \right) \\
+                                & = \sqrt{ \frac{2\epsilon_s V_{bi}}{e} \left( \frac{1}{N_a + N_d} \right) \left[ \frac{(N_d + N_a)^2}{N_a N_d} \right] } \\
+                                & = \sqrt{ \frac{2\epsilon_s V_{bi}}{e} \left( \frac{N_a + N_d}{N_a N_d} \right) } \\
+                            \end{align}
+                            
+                            De esta forma se obtiene la ecuación para el ancho de la región de carga espacial
+                            \begin{equation}
+                                \therefore W = \sqrt{ \frac{2\epsilon_s V_{bi}}{e} \left( \frac{N_a + N_d}{N_a N_d} \right) }
+                            \end{equation}
                         </p>
 
                 
