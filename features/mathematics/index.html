@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="../../mathjax-config.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"></script>
+    <script defer src="../render-equations.js"></script>
+    <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+    <h1>Métodos matemáticos</h1>
+        <h2>Propiedades fundamentales de las líneas rectas</h2>
+            <p>
+                <ul>
+                    <li>La <i>pendiente</i> $ m $ de una línea recta que pasa por los puntos $ (x_1, y_1) $ y $ (x_2, y_2) $ está dada por:
+                        \begin{equation}    
+                            m = \frac{y_2 - y_1}{x_2 - x_1} = \frac{\Delta y}{\Delta x}
+                        \end{equation}
+                        si $ x_1 \neq x_2 $.
+                    </li>
+                    <li>Si $x_2 - x_1 \neq 0 $ y $ y_2 \neq y_1 $, entonces la recta es vertical y su pendiente está <i>indefinida</i>.</li>
+                    <li>Cualquier recta (a excepción de aquella que tiene una pendiente indefinida) se puede describir con su ecuación pendiente-ordenada al origen $y = mx + b $, donde $m$ es la pendiente de la recta y $ b $ es la ordenda al origen (el punto en el eje $ y $ por donde cruza la recta)</li>
+                    <li>Dos rectas distintas son paralelas si sus pendientes son iguales: $ m_1 = m_2 $</li>
+                    <li>Dos rectas son perpendiculares si sus pendientes son recíprocas y de signo contrario: $ m_1 = -1/m_2 $, siempre que $ m_1 \neq 0 $</li>
+                    <li>La pendiente puede ser calculada a partir de la ecuación de la recta $ax + by = c$ como $m = -a/b$</li>
+                    <li>Las rectas paralelas al eje $x$ tienen pendiente cero.</li>
+                    <li>Las rectas parelelas al eje $y$ tienen pendiente indefinida.</li>
+                </ul>
+            </p>
+        <h2>Dos ecuaciones lineales con dos incógnitas</h2>
+            <p>
+                Considérese el siguiente sistema de dos ecuaciones lineales con dos incógnitas $x$ y $y$:
+                \begin{align}
+                    a_{11}x + a_{12}y & = b_1 \\
+                    a_{21}x + a_{22}y & = b_2 \\
+                \end{align}
+
+                <ul>
+                    <li>Cualquier par de números reales $(x, y)$ que satisface el sistema se denomina como <i>solución</i>.</li>
+                    <li>El sistema es <i>consistente</i> si al menos una solución.</li>
+                    <li>El sistema es <i>inconsistente</i> si no tiene solución.</li>
+                    <li>Dos sistemas son equivalentes si la solución de un sistema es una solución del otro y viceversa.</li>
+                </ul>
+            </p>
+
+            <h3>Tipos de soluciones</h3>    
+                <p>                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Solución única</th>
+                                <th>Número infinito de soluciones</th>
+                                <th>Sin solución</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Descripción</td>
+                                <td>Si solo existe un par de números bien definidos $(x, y)$ que satisfacen el sistema, entonces el sistema tiene <i>solución única</i>.</td>
+                                <td>Si existe un par de números $(x, y(x))$ o $(x(y), y)$ donde una incógnita queda en términos de la otra, entonces el sistema tiene un <i>número infinito de soluciones</i>.</td>
+                                <td>Si no existe un solo par $(x, y)$ que satisface el sistema, entonces el sistema <i>no tiene solución</i>.</td>
+                            </tr>
+                            <tr>
+                                <td>Gráfica</td>
+                                <td><img src="../../public/solución-única.png" height="180"></td>
+                                <td><img src="../../public/número-infinito-soluciones.png" height="180"></td>
+                                <td><img src="../../public/sin-solución.png" height="180"></td>
+                            </tr>
+                            <tr>
+                                <td>Relación entre rectas</td>
+                                <td>No paralelas</td>
+                                <td>Coincidentes</td>
+                                <td>Paralelas</td>
+                            </tr>
+                            <tr>
+                                <td>Puntos de intersección</td>
+                                <td>Un punto de intersección</td>
+                                <td>Número infinito de puntos de intersección</td>
+                                <td>Sin puntos de intersección</td>
+                            </tr>
+                            <tr>
+                                <td>Condición</td>
+                                <td>Si y solo si 
+                                    $$ a_{11}a_{22} - a_{12}a_{21} \neq 0 $$
+                                </td>
+                                <td>Si y solo si 
+                                    $$ a_{11}a_{22} - a_{12}a_{21} = 0 $$
+                                </td>
+                                <td>Si y solo si 
+                                    $$ a_{11}a_{22} - a_{12}a_{21} = 0 $$
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </p>
+
+                
+    <a href="../../index.html">Index</a><br>
+</body>
+</html>
