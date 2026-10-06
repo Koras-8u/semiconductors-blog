@@ -681,6 +681,139 @@
                                 \therefore W = \sqrt{ \frac{2\epsilon_s V_{bi}}{e} \left( \frac{N_a + N_d}{N_a N_d} \right) }
                             \end{equation}
                         </p>
+            
+            <h3>Relación ideal corriente-voltaje</h3>
+                <h4>Condiciones de frontera</h4>
+                    <h5>Definición</h5>
+                        <p>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Región P</th>
+                                        <th>Región N</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Concentraciones de portadores minoritarios</td>
+                                        <td>Electrones en la región P:
+                                            \begin{equation}
+                                                n_p = n_{p0} \exp{ \left( \frac{eV_a}{k_BT} \right) }
+                                            \end{equation}
+                                        </td>
+                                        <td>Huecos en la región N:
+                                            \begin{equation}
+                                                p_n = p_{n0} \exp{ \left( \frac{eV_a}{k_BT} \right) }
+                                            \end{equation}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </p>
+                    <h5>Demostración</h5>
+                        <p>
+                            La región N contiene muchos más electrones en la banda de conducción que en la región P. El $ V_{bi} $ impide que estos electrones fluyan hacia la región P. <br>
+                            <img src="../../public/banda-conducción.png" height="180"><br>
+                            
+                            A partir de la ecuación para el $ V_{bi} $, se pueden despejar las concentraciones:
+                            \begin{equation}
+                                V_{bi} = V_t \ln \left( \frac{N_aN_d}{n^2_i} \right)
+                            \end{equation}
+                            \begin{equation}
+                                \rightarrow \frac{V_{bi}}{V_t} = \ln \left( \frac{N_aN_d}{n^2_i} \right)
+                            \end{equation}
+                            \begin{equation}
+                                \rightarrow \exp{ \left( \frac{V_{bi}}{V_t} \right) } = \frac{N_aN_d}{n^2_i}
+                            \end{equation}
+                            \begin{equation}
+                                \frac{n^2_i}{N_aN_d} = \exp{ \left( -\frac{V_{bi}}{V_t} \right) }
+                            \end{equation}
+
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Región P</th>
+                                        <th>Región N</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Asumiendo ionización completa</td>
+                                        <td>La concentración de portadores mayoritarios en la región P (huecos) en equilibrio térmico $ p_{p0} $ es:
+                                            \begin{equation}
+                                                p_{p0} \approx N_a
+                                            \end{equation}
+                                            
+                                            Y la concentración de portadores minoritarios en la región P (electrones) en equilibrio térmico $ n_{p0} $ es:
+                                            \begin{equation}
+                                                n_{p0} \approx \frac{n_i^2}{N_a}
+                                            \end{equation}
+                                        </td>
+                                        <td>La concentración de portadores mayoritarios en la región N (electrones) en equilibrio térmico $ n_{n0} $ es:
+                                            \begin{equation}
+                                                n_{n0} \approx N_d
+                                            \end{equation}
+                                            
+                                            Y la concentración de portadores minoritarios en la región N (huecos) en equilibrio térmico $ p_{n0} $ es:
+                                            \begin{equation}
+                                                p_{n0} \approx \frac{n_i^2}{N_d}
+                                            \end{equation}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sustituyendo en ecuación de concentraciones</td>
+                                        <td>
+                                            \begin{equation}
+                                                \frac{n_{p0}}{n_{n0}} = \exp{ \left( -\frac{V_{bi}}{V_t} \right) }
+                                            \end{equation}
+                                            \begin{equation}
+                                                \implies n_{p0} = n_{n0} \exp{ \left( -\frac{V_{bi}}{V_t} \right) }
+                                            \end{equation}
+                                        </td>
+                                        <td>
+                                            \begin{equation}
+                                                \frac{p_{n0}}{p_{p0}} = \exp{ \left( -\frac{V_{bi}}{V_t} \right) }
+                                            \end{equation}
+                                            \begin{equation}
+                                                \implies p_{n0} = p_{p0} \exp{ \left( -\frac{V_{bi}}{V_t} \right) }
+                                            \end{equation}
+                                        </td>                                        
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <br>Si se aplica un voltaje positivo en la región P respecto a la región N, la barrera de potencial se reduce, por tanto el sistema deja de estar en equilibrio térmico:
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Región P</th>
+                                        <th>Región N</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Aplicación de voltaje en directa</td>
+                                        <td>La concentración de portadores minoritarios en la región P (electrones) al aplicar un voltaje $ V_a $ es:
+                                            \begin{align}
+                                                n_p & = n_{n0} \exp{ \left( -\frac{V_{bi} - V_a}{V_t} \right) } \\
+                                                & = n_{n0} \exp{ \left( -\frac{V_{bi}}{V_t} \right) } \exp{ \left( \frac{V_a}{V_t} \right) } \\
+                                                & = n_{p0} \exp{ \left( \frac{V_a}{V_t} \right) } \\
+                                            \end{align}
+                                        </td>
+                                        <td>La concentración de portadores minoritarios en la región N (huecos) al aplicar un voltaje $ V_a $ es:
+                                            \begin{align}
+                                                p_n & = p_{p0} \exp{ \left( -\frac{V_{bi} - V_a}{V_t} \right) } \\
+                                                & = p_{p0} \exp{ \left( -\frac{V_{bi}}{V_t} \right) } \exp{ \left( \frac{V_a}{V_t} \right) } \\
+                                                & = p_{n0} \exp{ \left( \frac{V_a}{V_t} \right) } \\
+                                            \end{align}
+                                        </td>  
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </p>
 
                 
     <a href="../../index.html">Index</a><br>
