@@ -841,6 +841,127 @@
                                 </tbody>
                             </table>
                         </p>
+                    <h5>Demostración</h5>
+                        <p>
+                            Se parte de la ecuación de transporte ambipolar:
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Región P</th>
+                                        <th>Región N</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Definición de la ecuación de transporte ambipolar</td>
+                                        <td>
+                                            \begin{equation}
+                                                D_n \frac{\partial^2 (\delta n_p)}{\partial x^2} - \mu_n E \frac{\partial (\delta n_p)}{\partial x} + g' - \frac{\delta n_p}{\tau_{n0}} = \frac{\partial (\delta n_p)}{\partial t}
+                                            \end{equation}
+                                            donde $ \delta n_p = n_p - n_{p0} $ es el exceso de concentración portadores minoritarios (electrones) y la diferencia entre la concentración total y la concentración en equlibrio térmico.
+                                        </td>
+                                        <td>
+                                            \begin{equation}
+                                                D_p \frac{\partial^2 (\delta p_n)}{\partial x^2} - \mu_p E \frac{\partial (\delta p_n)}{\partial x} + g' - \frac{\delta p_n}{\tau_{p0}} = \frac{\partial (\delta p_n)}{\partial t}
+                                            \end{equation}
+                                            donde $ \delta p_n = p_n - p_{n0} $ es el exceso de concentración portadores minoritarios (huecos) y la diferencia entre la concentración total y la concentración en equlibrio térmico.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Aproximación</td>
+                                        <td>Se asume que el campo eléctrico en la región neutra de P y la tasa de generación son cero, así como estado estacionario:
+                                            \begin{align}
+                                                E & = 0 \\
+                                                g' & = 0 \\
+                                                \frac{\partial(\delta n_p)}{\partial t} & = 0 \\
+                                            \end{align}
+                                            \begin{equation}
+                                                \implies D_n \frac{d^2 (\delta n_p)}{d x^2} - \frac{\delta n_p}{\tau_{n0}} = 0
+                                            \end{equation}
+                                        </td>
+                                        <td>Se asume que el campo eléctrico en la región neutra de N y la tasa de generación son cero, así como estado estacionario:
+                                            \begin{align}
+                                                E & = 0 \\
+                                                g' & = 0 \\
+                                                \frac{\partial(\delta p_n)}{\partial t} & = 0 \\
+                                            \end{align}
+                                            \begin{equation}
+                                                \implies D_p \frac{d^2 (\delta p_n)}{d x^2} - \frac{\delta p_n}{\tau_{p0}} = 0
+                                            \end{equation}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>División entre difusión de portadores</td>
+                                        <td>
+                                            \begin{equation}
+                                                \frac{d^2 (\delta n_p)}{d x^2} - \frac{\delta n_p}{D_n \tau_{n0}} = 0
+                                            \end{equation}
+                                        </td>
+                                        <td>
+                                            \begin{equation}
+                                                \frac{d^2 (\delta p_n)}{d x^2} - \frac{\delta p_n}{D_p \tau_{p0}} = 0
+                                            \end{equation}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sustitución de la longitud de difusión</td>
+                                        <td>Con $ L_n^2 = D_n \tau_{n0} $:
+                                            \begin{equation}
+                                                \frac{d^2 (\delta n_p)}{d x^2} - \frac{\delta n_p}{L_n^2} = 0
+                                            \end{equation}
+                                        </td>
+                                        <td>Con $ L_p^2 = D_p \tau_{p0} $:
+                                            \begin{equation}
+                                                \frac{d^2 (\delta p_n)}{d x^2} - \frac{\delta p_n}{L_p^2} = 0
+                                            \end{equation}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Solución general para la ecuación diferencial</td>
+                                        <td>
+                                            \begin{equation}
+                                                \delta n_p(x) = Ae^{x/L_n} + Be^{-x/L_n} \quad (x \leq -x_p)
+                                            \end{equation}
+                                        </td>
+                                        <td>
+                                            \begin{equation}
+                                                \delta p_n(x) = Ce^{x/L_p} + De^{-x/L_p} \quad (x \geq x_n)
+                                            \end{equation}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Aplicación de condiciones de frontera</td>
+                                        <td>Para la región P se tienen las condiciones de frontera:
+                                            \begin{equation}
+                                                n_p(-x_p) = n_{p0} \exp{ \left( \frac{V_a}{V_t} \right)}
+                                            \end{equation}
+                                            \begin{equation}
+                                                n_p(x \to -\infty) = n_{p0}
+                                            \end{equation}
+
+                                            Entonces, el coeficiente $B$ resulta 0 y se obtiene que:
+                                            \begin{equation}
+                                                \delta n_p(x) = n_{p0} \left[ \exp{ \left( \frac{V_a}{V_t} \right) } - 1 \right] \exp{ \left( \frac{x_p + x}{L_n} \right) }, \quad (x \leq -x_p)
+                                            \end{equation}
+                                        </td>
+                                        <td>Para la región N se tienen las condiciones de frontera:
+                                            \begin{equation}
+                                                p_n(x_n) = p_{n0} \exp{ \left( \frac{V_a}{V_t} \right)}
+                                            \end{equation}
+                                            \begin{equation}
+                                                p_n(x \to +\infty) = p_{n0}
+                                            \end{equation}
+
+                                            El coeficiente $C$ resulta 0 y se obtiene que:
+                                            \begin{equation}
+                                                \delta p_n(x) = p_{n0} \left[ \exp{ \left( \frac{V_a}{V_t} \right) } - 1 \right] \exp{ \left( \frac{x_n - x}{L_p} \right) }, \quad (x \geq x_n)
+                                            \end{equation}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </p>
 
 
                 
