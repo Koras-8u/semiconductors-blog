@@ -962,7 +962,129 @@
                                 </tbody>
                             </table>
                         </p>
+                <h4>Corriente de la unión PN</h4>
+                    <h5>Definición</h5>
+                        <p>
+                            La ecuación del diodo ideal es
+                            \begin{equation}
+                                J = J_s \left[ \exp{ \left( \frac{V_a}{V_t} \right) - 1 } \right]
+                            \end{equation}
 
+                            donde $ J_s $ es la densidad de corriente de saturación en inversa y está dada por
+                            \begin{equation}
+                                J_s = \frac{e D_n n_{p0}}{L_n} + \frac{e D_p p_{n0}}{L_p}
+                            \end{equation}
+                        </p>
+                    <h5>Demostración</h5>
+                        <p>
+                            Se parte de la densidad de corriente de difusión de los portadores minoritarios en cada región:
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Región P</th>
+                                        <th>Región N</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Definión de la densidad de corriente</td>
+                                        <td>
+                                            \begin{equation}
+                                                J_n(-x_p) = \left. eD_n \frac{dn_p(x)}{dx} \right|_{x=-x_p}
+                                            \end{equation}
+                                        </td>
+                                        <td>
+                                            \begin{equation}
+                                                J_p(x_n) = \left. -eD_p \frac{dp_n(x)}{dx} \right|_{x=x_n}
+                                            \end{equation}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Asumiendo regiones uniformemente dopadas</td>
+                                        <td>La concentración de portadores en equilibrio térmico es constante, por lo que la densidad puede reescribirse como
+                                            \begin{equation}
+                                                J_n(-x_p) = \left. eD_n \frac{d(\delta n_p(x))}{dx} \right|_{x=-x_p}
+                                            \end{equation}
+                                        </td>
+                                        <td>La concentración de portadores en equilibrio térmico es constante, por lo que la densidad puede reescribirse como
+                                            \begin{equation}
+                                                J_p(x_n) = \left. -eD_p \frac{d(\delta p_n(x))}{dx} \right|_{x=x_n}
+                                            \end{equation}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Calculando derivada del exceso de concentración de portadores</td>
+                                        <td>Para reducir escritura, se establece la siguiente igualdad:
+                                            \begin{equation}
+                                                \Delta_n = n_{p0} \left[ \exp{ \left( \frac{V_a}{V_t} \right) } - 1 \right]
+                                            \end{equation}
+
+                                            Entonces 
+                                            \begin{align}
+                                                \frac{d(\delta n_p(x))}{dx} & = \frac{d}{dx} \left\{ \Delta_n \exp{ \left( \frac{x_p + x}{L_n} \right) } \right\} \\
+                                                & = \Delta_n \frac{d}{dx} \left[ \exp{ \left( \frac{x_p + x}{L_n} \right) } \right] \\
+                                                & = \frac{1}{L_n}\Delta_n \exp{ \left( \frac{x_p + x}{L_n} \right) } \\
+                                            \end{align}
+                                        </td>
+                                        <td>Para reducir escritura, se establece la siguiente igualdad:
+                                            \begin{equation}
+                                                \Delta_p = p_{n0} \left[ \exp{ \left( \frac{V_a}{V_t} \right) } - 1 \right]
+                                            \end{equation}
+
+                                            Entonces 
+                                            \begin{align}
+                                                \frac{d(\delta p_n(x))}{dx} & = \frac{d}{dx} \left\{ \Delta_p \exp{ \left( \frac{x_n - x}{L_p} \right) } \right\} \\
+                                                & = \Delta_p \frac{d}{dx} \left[ \exp{ \left( \frac{x_n - x}{L_p} \right) } \right] \\
+                                                & = -\frac{1}{L_p} \Delta_p \exp{ \left( \frac{x_n - x}{L_p} \right) } \\
+                                            \end{align}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Evaluando derivada</td>
+                                        <td>
+                                            \begin{align}
+                                                \left. \frac{1}{L_n}\Delta_n \exp{ \left( \frac{x_p + x}{L_n} \right) } \right|_{x=-x_p} & = \frac{1}{L_n}\Delta_n \exp{ \left( \frac{x_p + (-x_p)}{L_n} \right) } \\
+                                                & = \frac{1}{L_n}\Delta_n e^{0/L_n} \\
+                                                & = \frac{1}{L_n}\Delta_n \\
+                                            \end{align}
+                                        </td>
+                                        <td>
+                                            \begin{align}
+                                                \left. -\frac{1}{L_p} \Delta_p \exp{ \left( \frac{x_n - x}{L_p} \right) } \right|_{x=x_n} & = \frac{1}{L_p} \Delta_p \exp{ \left( \frac{x_n - (x_n)}{L_p} \right) } \\
+                                                & = -\frac{1}{L_p} \Delta_p e^{0/L_p} \\
+                                                & = -\frac{1}{L_p} \Delta_p \\
+                                            \end{align}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sustituyendo en la ecuaciónde densidad de corriente</td>
+                                        <td>
+                                            \begin{align}
+                                                J_n(-x_p) & = eD_n \left( \frac{1}{L_n}\Delta_n \right) \\
+                                                & = eD_n \left\{ \frac{n_{p0}}{L_n} \left[ \exp{ \left( \frac{V_a}{V_t} \right) } - 1 \right] \right\} \\
+                                                & = \frac{eD_n n_{p0}}{L_n} \left[ \exp{ \left( \frac{V_a}{V_t} \right) } - 1 \right] \\
+                                            \end{align}
+                                        </td>
+                                        <td>
+                                            \begin{align}
+                                                J_p(x_n) & = -eD_p \left( -\frac{1}{L_p} \Delta_p \right) \\
+                                                & = eD_p \left\{ \frac{p_{n0}}{L_p} \left[ \exp{ \left( \frac{V_a}{V_t} \right) } - 1 \right] \right\} \\
+                                                & = \frac{eD_p p_{n0}}{L_p} \left[ \exp{ \left( \frac{V_a}{V_t} \right) } - 1 \right] \\
+                                            \end{align}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table><br>
+
+                            La corriente total en la unión es la suma de corriente de huecos y corriente de electrones, la cual es constante a través de la zona de agotamiento.
+                            \begin{align}
+                                J & = \frac{eD_n n_{p0}}{L_n} \left[ \exp{ \left( \frac{V_a}{V_t} \right) } - 1 \right] + \frac{eD_p p_{n0}}{L_p} \left[ \exp{ \left( \frac{V_a}{V_t} \right) } - 1 \right] \\
+                                & = \left( \frac{eD_n n_{p0}}{L_n} + \frac{eD_p p_{n0}}{L_p} \right) \left[ \exp{ \left( \frac{V_a}{V_t} \right) } - 1 \right] \\
+                                & = J_s \left[ \exp{ \left( \frac{V_a}{V_t} \right) } - 1 \right] \\
+                                \therefore J & = J_s \left[ \exp{ \left( \frac{V_a}{V_t} \right) } - 1 \right]
+                            \end{align}
+                        </p>
 
                 
     <a href="../../index.html">Index</a><br>
