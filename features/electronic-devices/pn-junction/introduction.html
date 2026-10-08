@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to the PN Junction</title>
+    <script defer src="../../mathjax-config.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"></script>
+    <link rel="stylesheet" href="../main.css">
+</head>
+<body>
+    <h1>Unión PN</h1>
+        <p>
+            <i>Equilibrio térmico</i>: Implica que ninguna fuerza externa tales como voltaje, campos eléctricos o magnéticos, o gradientes de temperatura están actuando sobre el semiconductor. <br><br>
+            <i>Unión metalúrgica</i>: La interfaz que separa las regiones P y N.
+            <ul>
+                <li>El semiconductor en su totalidad es de un solo material cristalino.</li>
+                <li>La región P se forma con dopaje de impurezas de átomos aceptores (como elementos trivalentes: B, Ga y Al).</li>
+                <li>La región N se forma con dopaje de impurezas de átomos donaores (como elementos pentavalentes: P, As y Sb).</li>
+            </ul>
+            
+            <i>Difusión de portadores</i>: Movimiento de portadores de una región a otra debido a la diferencia de concentraciones entre ellas.
+                <ol>
+                    <li>
+                        Se considera una unión escalonada, en la cual la concentración de dopado en cada lado es uniforme, pero hay un cambio abrupto en la unión metalúrgica. <br>
+                        <img src="../../../public/perfil-concentraciones-unión-pn.png" height="180">
+                    </li>
+                    <li>Un gradiente de densidad provocará que los portadores se muevan de una región a otra:
+                        <ul>
+                            <li>Los portadores mayoritarios en la región N (electrones) comenzarán a difundirse hacia la región P.</li>
+                            <li>Los portadores mayoritarios en la región P (huecos) comenzarán a difundirse hacia la región N.</li>
+                        </ul>
+                    </li>
+                    <li>Conforme los portadores se difunden, dejan átomos cargados en sus respectivas regiones de origen:
+                        <ul>
+                            <li>Los electrones dejan átomos cargados positivamente.</li>
+                            <li>Los huecos dejan átomos cargados negativamente.</li>
+                            <li>La región formada por los átomos cargados se llama <i>región de carga espacial</i>.</li>
+                        </ul>
+                    </li>
+                    <li>Los átomos cargados inducen un campo eléctrico en la región cerca de la unión metalúrgica, de la región N hacia la región P.</li>
+                    <li>Si no hay conexiones externas al semiconductor, entonces la difusión no es indefinida. En escencia, el resto de los electrones y huecos son expulsados de la región de carga espacial por el campo eléctrico.</li>
+                    <li>
+                        La región de carga espacial se queda sin cargas móviles (portadores que se muevan de un lado a otro), por lo que esta región también recibe el nombre de <i>región de agotamiento</i>. <br>
+                        <img src="../../../public/difusión-de-portadores.png" width="400">
+                    </li>
+                </ol>
+                
+            El comportamiento de la unión PN se puede entender atendiendo a tres casos que se describen de forma resumida en la siguiente tabla.
+        
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Sin polarización</th>
+                        <th>Polarización inversa</th>
+                        <th>Polarización directa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Condiciones</td>
+                        <td>
+                            <ul>
+                                <li>No se aplica ningún voltaje a través de la unión.</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Se aplica un voltaje a través de la unión.</li>
+                                <li>El positivo está conectado a la región N.</li>
+                                <li>El negativo está conectado a la región P.</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Se aplica un voltaje a través de la unión.</li>
+                                <li>El positivo está conectado a la región P.</li>
+                                <li>El negativo está conectado a la región N.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Diagrama eléctrico</td>
+                        <td><img src="../../../public/diagrama-eléctrico-sin-polarización.png" height="120"></td>
+                        <td><img src="../../../public/diagrama-eléctrico-polarización-inversa.png" height="150"></td>
+                        <td><img src="../../../public/diagrama-eléctrico-polarización-directa.png" height="150"></td>
+                    </tr>
+                    <tr>
+                        <td>Características</td>
+                        <td>
+                            <ul>
+                                <li>La unión está en equilibrio térmico.</li>
+                                <li>La energía de Fermi se mantiene en nivel constante a lo largo de todo el sistema.</li>
+                                <li>Los electrones en la banda de conducción de la región N ven una barrera de potencial al tratar de moverse hacia la banda de conducción de la región P: <i>el voltaje interconstruido</i>.</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>No existe equlibrio térmico.</li>
+                                <li>La energía de Fermi no es constante a lo largo del sistema.</li>
+                                <li>El nivel de Fermi en el lado N está por debajo de la energía de Fermi en el lado P.</li>
+                                <li>El campo eléctrico aumenta, a la vez la concentración de carga positiva en la región N y carga negativa en la región P aumentan, y por tanto el ancho de carga espacial también incrementa.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Diagrama de bandas de energía</td>
+                        <td><img src="../../../public/diagrama-bandas-sin-polarización.png" width="300"></td>
+                        <td><img src="../../../public/diagrama-bandas-polarización-inversa.png" width="300"></td>
+                        <td><img src="../../../public/diagrama-bandas-polarización-directa.png" width="300"></td>
+                    </tr>
+                    <tr>
+                        <td>Potencial formado entre las regiones P y N</td>
+                        <td>
+                            \begin{equation}
+                                V_{bi} = |\phi_{Fn}| + |\phi_{Fp}|
+                            \end{equation}
+                        </td>
+                        <td>
+                            \begin{align}
+                                V_{total} & = |\phi_{Fn}| + |\phi_{Fp}| + V_R \\
+                                & = V_{bi} + V_R
+                            \end{align}
+                        </td>
+                        <td>
+                            \begin{align}
+                                V_{total} & = |\phi_{Fn}| + |\phi_{Fp}| - V_a \\
+                                & = V_{bi} - V_a
+                            \end{align}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Ancho de carga espacial</td>
+                        <td>
+                            \begin{equation}
+                                W = \sqrt{ \frac{2\epsilon_s V_{bi}}{e} \left( \frac{N_a + N_d}{N_aN_d} \right) }
+                            \end{equation}
+                        </td>
+                        <td>
+                            \begin{equation}
+                                W = \sqrt{ \frac{2\epsilon_s ( V_{bi} + V_R)}{e} \left( \frac{N_a + N_d}{N_aN_d} \right) }
+                            \end{equation}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </p>
+
+    <a href="../index.html">Index</a><br>
+
+</body>
+</html>

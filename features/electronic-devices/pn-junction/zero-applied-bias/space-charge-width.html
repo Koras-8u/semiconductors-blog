@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Charge Width</title>
+    <script defer src="../../../../mathjax-config.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"></script>
+    <link rel="stylesheet" href="../../main.css">
+</head>
+<body>
+    <h1>Ancho de carga espacial</h1>
+        <h2>Definición</h2>
+            <p>
+                El <i>ancho de carga espacial</i> es la distancia que se extiende la regón de carga espacial hacia las regiones P y N desde la unión metalúrgica.
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Región P</th>
+                            <th>Ancho total</th>
+                            <th>Región N</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                \begin{equation}
+                                    x_p = \sqrt{ \frac{2\epsilon_s V_{bi}}{e} \left( \frac{N_d}{N_a} \right) \left( \frac{1}{N_a + N_d} \right) }
+                                \end{equation}
+                            </td>
+                            <td>
+                                \begin{equation}
+                                    W = \sqrt{ \frac{2\epsilon_s V_{bi}}{e} \left( \frac{N_a + N_d}{N_aN_d} \right) }
+                                \end{equation}
+                            </td>
+                            <td>
+                                \begin{equation}
+                                    x_n = \sqrt{ \frac{2\epsilon_s V_{bi}}{e} \left( \frac{N_a}{N_d} \right) \left( \frac{1}{N_a + N_d} \right) }
+                                \end{equation}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </p>
+        <h2>Demostración</h2>
+            <p>
+                A partir de la relación $ N_a x_p = N_d x_n $ y de $ V_{bi} = \frac{e}{2\epsilon_s} (N_dx_n^2 + N_ax_p^2) $ se pueden deducir ecuaciones para obtener el ancho de la región como sigue:
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Región P</th>
+                            <th>Región N</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ancho de una región en función de la otra</td>
+                            <td>
+                                \begin{equation}
+                                    x_n = \frac{N_a}{N_d} x_p
+                                \end{equation}
+                            </td>
+                            <td>
+                                \begin{equation}
+                                    x_p = \frac{N_d}{N_a} x_n
+                                \end{equation}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sustitución en ecuación para el $ V_{bi} $</td>
+                            <td>
+                                \begin{align}
+                                    V_{bi} & = \frac{e}{2\epsilon_s} \left[ N_d \left( \frac{N_a}{N_d} x_p \right)^2 + N_ax_p^2 \right] \\
+                                    & = \frac{e}{2\epsilon_s} \left[ N_d \left( \frac{N_a^2}{N_d^2} x_p^2 \right) + N_ax_p^2 \right] \\
+                                    & = \frac{e}{2\epsilon_s} \left( \frac{N_a^2}{N_d} x_p^2 + N_ax_p^2 \right) \\
+                                    & = \frac{e}{2\epsilon_s} \left( \frac{N_a}{N_d} \right) (N_a + N_d) x_p^2 \\
+                                \end{align}
+                            </td>
+                            <td>
+                                \begin{align}
+                                    V_{bi} & = \frac{e}{2\epsilon_s} \left[ N_d x_n^2 + N_a \left( \frac{N_d}{N_a} x_n \right)^2 \right] \\
+                                    & = \frac{e}{2\epsilon_s} \left[ N_d x_n^2 + N_a \left( \frac{N_d^2}{N_a^2} x_n^2 \right) \right] \\
+                                    & = \frac{e}{2\epsilon_s} \left( N_d x_n^2 + \frac{N_d^2}{N_a} x_n^2 \right) \\
+                                    & = \frac{e}{2\epsilon_s} \left( \frac{N_d}{N_a} \right) (N_a + N_d) x_n^2 \\
+                                \end{align}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Resolviendo para el ancho de cada región</td>
+                            <td>
+                                \begin{equation}
+                                    x_p^2 = \frac{2 \epsilon_s V_{bi}}{e} \left( \frac{N_d}{N_a} \right) \left( \frac{1}{N_a + N_d} \right)
+                                \end{equation}
+                                \begin{equation}
+                                    \implies x_p = \sqrt{ \frac{2\epsilon_s V_{bi}}{e} \left( \frac{N_d}{N_a} \right) \left( \frac{1}{N_a + N_d} \right) }
+                                \end{equation}
+                            </td>
+                            <td>
+                                \begin{equation}
+                                    x_n^2 = \frac{2 \epsilon_s V_{bi}}{e} \left( \frac{N_a}{N_d} \right) \left( \frac{1}{N_a + N_d} \right)
+                                \end{equation}
+                                \begin{equation}
+                                    \implies x_n = \sqrt{ \frac{2\epsilon_s V_{bi}}{e} \left( \frac{N_a}{N_d} \right) \left( \frac{1}{N_a + N_d} \right) }
+                                \end{equation}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                Si el ancho se define como $ W = x_p + x_n $, entonces
+                \begin{align}
+                    W & = \sqrt{ \frac{2\epsilon_s V_{bi}}{e} \left( \frac{N_d}{N_a} \right) \left( \frac{1}{N_a + N_d} \right) } + \sqrt{ \frac{2\epsilon_s V_{bi}}{e} \left( \frac{N_a}{N_d} \right) \left( \frac{1}{N_a + N_d} \right) } \\
+                    & = \sqrt{ \frac{2\epsilon_s V_{bi}}{e} \left( \frac{1}{N_a + N_d} \right) } \left( \sqrt{ \frac{N_d}{N_a} } + \sqrt{ \frac{N_a}{N_d} } \right) \\
+                    & = \sqrt{ \frac{2\epsilon_s V_{bi}}{e} \left( \frac{1}{N_a + N_d} \right) } \left( \frac{\sqrt{N_d}}{\sqrt{N_a}} + \frac{\sqrt{N_a}}{\sqrt{N_d}} \right) \\
+                    & = \sqrt{ \frac{2\epsilon_s V_{bi}}{e} \left( \frac{1}{N_a + N_d} \right) } \left( \frac{N_d + N_a}{\sqrt{N_a N_d}} \right) \\
+                    & = \sqrt{ \frac{2\epsilon_s V_{bi}}{e} \left( \frac{1}{N_a + N_d} \right) \left[ \frac{(N_d + N_a)^2}{N_a N_d} \right] } \\
+                    & = \sqrt{ \frac{2\epsilon_s V_{bi}}{e} \left( \frac{N_a + N_d}{N_a N_d} \right) } \\
+                \end{align}
+                
+                De esta forma se obtiene la ecuación para el ancho de la región de carga espacial
+                \begin{equation}
+                    \therefore W = \sqrt{ \frac{2\epsilon_s V_{bi}}{e} \left( \frac{N_a + N_d}{N_a N_d} \right) }
+                \end{equation}
+            </p>
+    <a href="../../index.html">Index</a><br>
+
+</body>
+</html>

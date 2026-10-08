@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Built-in Potential Barrier</title>
+    <script defer src="../../../../mathjax-config.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"></script>
+    <link rel="stylesheet" href="../../main.css">
+</head>
+<body>
+<h1>Barrera de potencial interconstruida</h1>
+    <h2>Definición</h2>
+        <p>
+            El <i>voltaje interconstruido</i> puede definirse como la diferencia entre los niveles de energía intrínsecos de Fermi en las regiones P y N, conduciendo a la forma final:
+            \begin{equation}
+                V_{bi} = V_t \ln \left( \frac{N_aN_d}{n^2_i} \right)
+            \end{equation}
+    
+            donde $ V_t = k_BT/e = 0.026V $ es el voltaje térmico.
+        </p>
+    <h2>Características cualitativas</h2>
+        <p>
+            <ul>
+                <li>Impide que los electrones en la banda de conducción de la región N se muevan hacia la banda de conducción de la región P.</li>
+                <li>Mantiene el equilibrio entre portadores mayoritarios (electrones) en la región N y los portadores minoritarios (electrones) en la región P.</li>
+                <li>Mantiene el equilibrio entre portadores mayoritarios (huecos) en la región P y los portadores minoritarios (huecos) en la región N.</li>
+                <li>No puede ser medida con un voltímetro porque se formarán nuevas barreras de potencial entre las puntas de prueba y el semiconductor cancelará el <i>voltaje interconstruido</i>.</li>
+                <li>No produce corriente.</li>
+            </ul>
+        </p>
+    <h2>Demostración</h2>
+        <p>
+            La obtención de la ecuación final parte de la definición
+            \begin{equation}
+                V_{bi} = |\phi_{Fp}| + |\phi_{Fn}|
+            \end{equation}
+            (<b>Nota:</b> Todos los cálculos y los parámetros usados son considerando que el sistema se encuentra en equilibrio térmico). <br><br>
+
+            <table>
+                <thead>
+                    <th></th>
+                    <th>Región P</th>
+                    <th>Región N</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Definición de concentraciones de portadores</td>
+                        <td>
+                            Concentración de huecos (aceptores) en la banda de conducción:
+                            \begin{equation}
+                                p_0 = N_a = n_i \exp \left( \frac{E_{Fi} - E_F}{k_B T} \right)
+                            \end{equation}
+                        </td>                                
+                        <td>
+                            Concentración de electrones (donadores) en la banda de conducción:
+                            \begin{equation}
+                                n_0 = N_d = n_i \exp \left( \frac{E_F - E_{Fi}}{k_B T} \right)
+                            \end{equation}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Definición del potencial como diferencia de energías</td>
+                        <td>
+                            La energía de Fermi intrínseca de la región P es mayor que la energía de Fermi.
+                            \begin{equation}
+                                e\phi_{Fp} = E_{Fi} - E_F
+                            \end{equation}
+                        </td>
+                        <td>
+                            La energía de Fermi intrínseca de la región N es menor que la energía de Fermi.
+                            \begin{equation}
+                                e\phi_{Fn} = E_{Fi} - E_F
+                            \end{equation}
+                        </td>               
+                    </tr>
+                    <tr>
+                        <td>Sustitución del potencial en las concentraciones</td>
+                        <td>
+                            \begin{equation}
+                                N_a = n_i \exp \left( \frac{ e\phi_{Fp} }{k_B T} \right)
+                            \end{equation}
+                        </td>
+                        <td>
+                            \begin{equation}
+                                N_d = n_i \exp \left( \frac{ -(e\phi_{Fn}) }{k_B T} \right)
+                            \end{equation}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Despejando el potencial</td>
+                        <td>
+                            \begin{equation}
+                                \frac{N_a}{n_i} = \exp \left( \frac{ e\phi_{Fp} }{k_B T} \right)
+                            \end{equation}
+                            \begin{equation}
+                                \rightarrow \ln \frac{N_a}{n_i} = \frac{ e\phi_{Fp} }{k_B T}
+                            \end{equation}
+                            \begin{equation}
+                                \rightarrow \phi_{Fp} = \frac{k_B T}{e} \ln \left( \frac{N_a}{n_i} \right)
+                            \end{equation}
+                        </td>
+                        <td>
+                            \begin{align}
+                                \frac{N_d}{n_i}= \exp \left( \frac{ -(e\phi_{Fn}) }{k_B T} \right)
+                            \end{align}
+                            \begin{align}
+                                \rightarrow \ln \frac{N_d}{n_i}  = \frac{ -(e\phi_{Fn}) }{k_B T}
+                            \end{align}
+                            \begin{align}
+                                \rightarrow \phi_{Fn} = -\frac{k_B T}{e} \ln \left( \frac{N_d}{n_i} \right)
+                            \end{align}    
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            Sustituyendo en la ecuación inicial, se obtiene:
+            \begin{align}
+                V_{bi} & = \left| \frac{k_B T}{e} \ln \left( \frac{N_a}{n_i} \right) \right| + \left| -\frac{k_B T}{e} \ln \left( \frac{N_d}{n_i} \right) \right| \\
+                & = \frac{k_B T}{e} \ln \left( \frac{N_a}{n_i} \right) + \frac{k_B T}{e} \ln \left( \frac{N_d}{n_i} \right) \\
+                & = \frac{k_B T}{e} \left[ \ln \left( \frac{N_a}{n_i} \right) + \ln \left( \frac{N_d}{n_i} \right) \right] \\
+                & = \frac{k_B T}{e} \ln \left( \frac{N_a}{n_i} \frac{N_d}{n_i} \right) \\
+                & = \frac{k_B T}{e} \ln \left( \frac{N_aN_d}{n_i^2} \right) \\
+                & = V_t \ln \left( \frac{N_aN_d}{n^2_i} \right)
+            \end{align}
+
+            donde $ V_t = k_BT/e = 0.026V $ es el voltaje térmico. <br><br>
+            
+            De este modo se obtiene la ecuación de la barrera de potencial interconstruido en función de las concentraciones de aceptores y donadores.
+            \begin{equation}
+                \therefore V_{bi} = \frac{k_B T}{e} \ln \left( \frac{N_aN_d}{n_i^2} \right)
+            \end{equation}
+        </p>
+
+    <a href="../../index.html">Index</a><br>
+
+</body>
+</html>
