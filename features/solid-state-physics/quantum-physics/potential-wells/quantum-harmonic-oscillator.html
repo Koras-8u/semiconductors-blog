@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Harmonic Oscillator</title>
+    <script defer src="../../../../mathjax-config.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"></script>
+    <link rel="stylesheet" href="../../main.css">
+</head>
+<body>
+    <h1>The quantum harmonic oscillator</h1>
+        <p>
+            Simple harmonic motion is always associated with a potential energy varying as the square of the distance from an equilibrium point of minimum energy. <br>
+            
+            The classical potential energy of a one-dimensional harmonic oscillator is $ \beta x^2/2 $ where $ \beta $ is the force constant and $ x $ the displacement. It has the form of a parabolic well of inifnite depth. <br>
+            
+            Classically, a particle of mass $m$ under the influence of this potential oscillates with a constant frequency $\omega$ equal to $\sqrt{\beta/m}$. <br>
+            
+            The classical potential energy can thus be written as
+            \begin{equation}
+                V(x) = \frac{1}{2}\beta x^2 = \frac{1}{2}m\omega^2 x^2 
+            \end{equation}
+
+            which is inserted into the Schrödinger's equation
+            \begin{equation}
+                \frac{d^2 \psi}{d x^2}+\frac{2m}{\hbar^2}\left[\varepsilon-\frac{1}{2} m \omega^2 x^2\right] \psi(x)=0
+            \end{equation}
+
+            The eigenfunctions for this differential equation happens to be
+            \begin{equation}
+                \psi_n(\xi)=N_n H_n(\xi) e^{-\xi^2 / 2} 
+            \end{equation}
+
+            with $\xi = x\sqrt{\alpha}$, $n= 0, 1, 2, 3, ...$ and
+            \begin{equation}
+                N_n^2=\frac{1}{2^n n!} \sqrt{\frac{\alpha}{\pi}}
+            \end{equation}
+
+            where $N_n^2$ is the normalization constant, chosen to satisfy condition, and $H_n(\xi)$ represents the Hermite polynomials. <br>
+
+            The energy eigenvalues ${\varepsilon_n}$ must be given
+            \begin{equation}
+                \varepsilon_n = \left( n + \frac{1}{2} \right) \hbar \omega
+            \end{equation}
+        </p>
+
+    <a href="../../index.html">Index</a><br>
+    
+</body>
+</html>
+
