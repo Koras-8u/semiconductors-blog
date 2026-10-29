@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dispersionless wave</title>
+    <script defer src="../../../../mathjax-config.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"></script>
+    <link rel="stylesheet" href="../../main.css">
+</head>
+<body>
+    <h1>Dispersive media</h1>
+        <p>
+            The effects associated with propagation in dispersive media can be illustrated by an example involving the wave solutions of the partial differential equation
+            \begin{equation}
+                \frac{\partial^4u}{\partial t^4} + \alpha^2 \frac{\partial^2u}{\partial t^2} + \beta^2 \frac{\partial^2u}{\partial x^2} = 0
+            \end{equation}
+
+            which leads to a dispersion relation of \( k \) as function of \( \omega \)
+            \begin{equation}
+                k = \frac{\pm\omega\sqrt{\omega^2 - \alpha^2}}{\beta}
+            \end{equation}
+
+            and the phase velocity
+            \begin{equation}
+                v_p = \frac{\omega}{k} = \frac{\beta}{\sqrt{\omega^2 - \alpha^2}}
+            \end{equation}
+
+            By differentiating, we obtain
+            \begin{equation}
+                v_g = \frac{d\omega}{dk} = \frac{\beta \sqrt{\omega^2 - \alpha^2}}{2\omega^2 - \alpha^2}
+            \end{equation}
+
+            Since the phase velocity is no longer a constant, then the wave suffers dispersion. The media propagates waves for \( \omega > \alpha \) without attenuation, but will propagate attenuated waves with frequencies below this "cut-off" limit.
+        </p>
+
+    <a href="../../index.html">Index</a><br>
+    
+</body>
+</html>
+
